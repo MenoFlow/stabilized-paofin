@@ -1,0 +1,611 @@
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #f5f7fa;
+            color: #333;
+        }
+
+        .header {
+            width: 100vw; /* Prend toute la largeur de la fenêtre */
+            background: linear-gradient(135deg, #003399, #00AEEF);
+            color: white;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .logo img {
+            height: 40px;
+        }
+
+        .user-info {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .welcome-section {
+            background: white;
+            padding: 2rem;
+            border-radius: 12px;
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+            text-align: center;
+        }
+
+        .welcome-title {
+            color: #003399;
+            font-size: 1.8rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .welcome-subtitle {
+            color: #666;
+            font-size: 1.1rem;
+        }
+
+        .dashboard-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .card {
+            background: white;
+            border-radius: 12px;
+            padding: 1.5rem;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+            border-left: 4px solid #003399;
+        }
+
+        .card h3 {
+            color: #003399;
+            margin-bottom: 1rem;
+            font-size: 1.2rem;
+        }
+
+        .status-badge {
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-weight: bold;
+            font-size: 0.9rem;
+            display: inline-block;
+            margin-bottom: 1rem;
+        }
+
+        .status-pending {
+            background: #fff3cd;
+            color: #856404;
+        }
+
+        .status-approved {
+            background: #d4edda;
+            color: #155724;
+        }
+
+        .status-active {
+            background: #cce5ff;
+            color: #004085;
+        }
+
+        .status-completed {
+            background: #e2e3e5;
+            color: #383d41;
+        }
+
+        .loan-summary {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+            margin: 1rem 0;
+        }
+
+        .summary-item {
+            text-align: center;
+            padding: 1rem;
+            background: #f8f9fa;
+            border-radius: 8px;
+        }
+
+        .summary-value {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #003399;
+            margin-bottom: 0.25rem;
+        }
+
+        .summary-label {
+            font-size: 0.9rem;
+            color: #666;
+        }
+
+        .payment-schedule {
+            max-height: 300px;
+            overflow-y: auto;
+        }
+
+        .payment-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem;
+            background: #f8f9fa;
+            border-radius: 8px;
+            margin-bottom: 0.5rem;
+        }
+
+        .payment-item.next {
+            background: #fff3cd;
+            border-left: 4px solid #ffc107;
+        }
+
+        .payment-item.paid {
+            background: #d4edda;
+            border-left: 4px solid #28a745;
+        }
+
+        .payment-item.overdue {
+            background: #f8d7da;
+            border-left: 4px solid #dc3545;
+        }
+
+        .payment-date {
+            font-weight: bold;
+            color: #003399;
+        }
+
+        .payment-amount {
+            font-weight: bold;
+            font-size: 1.1rem;
+        }
+
+        .payment-status {
+            padding: 0.25rem 0.5rem;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            font-weight: bold;
+        }
+
+        .btn {
+            background: #003399;
+            color: white;
+            border: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 1rem;
+            text-decoration: none;
+            display: inline-block;
+            text-align: center;
+        }
+
+        .btn:hover {
+            background: #002266;
+        }
+
+        .btn-success {
+            background: #28a745;
+        }
+
+        .btn-warning {
+            background: #ffc107;
+            color: #212529;
+        }
+
+        .btn-outline {
+            background: transparent;
+            border: 2px solid #003399;
+            color: #003399;
+        }
+
+        .btn-outline:hover {
+            background: #003399;
+            color: white;
+        }
+
+        .full-width {
+            grid-column: 1 / -1;
+        }
+
+        .progress-bar {
+            background: #eee;
+            height: 12px;
+            border-radius: 6px;
+            overflow: hidden;
+            margin: 1rem 0;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: #003399;
+            transition: width 0.3s ease;
+        }
+
+        .documents-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .document-item {
+            text-align: center;
+            padding: 1rem;
+            background: #f8f9fa;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .document-item:hover {
+            background: #e9ecef;
+            transform: translateY(-2px);
+        }
+
+        .document-icon {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .document-name {
+            font-weight: bold;
+            color: #003399;
+            margin-bottom: 0.25rem;
+        }
+
+        .document-date {
+            font-size: 0.8rem;
+            color: #666;
+        }
+
+        .notifications-list {
+            max-height: 250px;
+            overflow-y: auto;
+        }
+
+        .notification-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1rem;
+            background: #f8f9fa;
+            border-radius: 8px;
+            margin-bottom: 0.5rem;
+        }
+
+        .notification-item.unread {
+            background: #e3f2fd;
+            border-left: 4px solid #2196f3;
+        }
+
+        .notification-icon {
+            font-size: 1.5rem;
+        }
+
+        .notification-content {
+            flex: 1;
+        }
+
+        .notification-title {
+            font-weight: bold;
+            color: #003399;
+            margin-bottom: 0.25rem;
+        }
+
+        .notification-text {
+            font-size: 0.9rem;
+            color: #666;
+        }
+
+        .notification-time {
+            font-size: 0.8rem;
+            color: #999;
+        }
+
+        .quick-actions {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .action-item {
+            text-align: center;
+            padding: 1.5rem;
+            background: #f8f9fa;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .action-item:hover {
+            background: #e9ecef;
+            transform: translateY(-2px);
+        }
+
+        .action-icon {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+            color: #003399;
+        }
+
+        .action-label {
+            font-weight: bold;
+            color: #003399;
+        }
+
+        .contact-info {
+            background: #e8f5e8;
+            padding: 1rem;
+            border-radius: 8px;
+            margin-top: 1rem;
+        }
+
+        .contact-title {
+            font-weight: bold;
+            color: #155724;
+            margin-bottom: 0.5rem;
+        }
+
+        .contact-details {
+            font-size: 0.9rem;
+            color: #155724;
+        }
+
+        .language-toggle {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        .lang-btn {
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            padding: 0.5rem 1rem;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+
+        .lang-btn.active,
+        .lang-btn:hover {
+            background: rgba(255, 255, 255, 0.9);
+            color: #003399;
+            border-color: rgba(255, 255, 255, 0.9);
+        }
+
+        /* Mobile Responsiveness */
+        @media (max-width: 1024px) {
+            .container {
+                padding: 1rem;
+            }
+
+            .dashboard-grid {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+
+            .quick-actions {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .documents-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .header {
+                padding: 1rem;
+                flex-direction: column;
+                gap: 1rem;
+                text-align: center;
+            }
+
+            .logo {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+
+            .logo img {
+                height: 35px;
+            }
+
+            .user-info {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+
+            .welcome-section {
+                padding: 1.5rem;
+            }
+
+            .welcome-title {
+                font-size: 1.5rem;
+            }
+
+            .welcome-subtitle {
+                font-size: 1rem;
+            }
+
+            .quick-actions {
+                grid-template-columns: 1fr;
+                gap: 0.75rem;
+            }
+
+            .action-item {
+                padding: 1rem;
+            }
+
+            .action-icon {
+                font-size: 2rem;
+            }
+
+            .loan-summary {
+                grid-template-columns: 1fr;
+                gap: 0.75rem;
+            }
+
+            .summary-item {
+                padding: 0.75rem;
+            }
+
+            .summary-value {
+                font-size: 1.2rem;
+            }
+
+            .payment-item {
+                flex-direction: column;
+                gap: 0.5rem;
+                text-align: center;
+            }
+
+            .payment-amount {
+                font-size: 1rem;
+            }
+
+            .notification-item {
+                flex-direction: column;
+                gap: 0.5rem;
+                text-align: center;
+            }
+
+            .notification-icon {
+                font-size: 1.2rem;
+            }
+
+            .documents-grid {
+                grid-template-columns: 1fr;
+                gap: 0.75rem;
+            }
+
+            .document-item {
+                padding: 0.75rem;
+            }
+
+            .document-icon {
+                font-size: 1.5rem;
+            }
+
+            .btn {
+                padding: 0.75rem 1rem;
+                font-size: 0.9rem;
+            }
+
+            .contact-info {
+                padding: 0.75rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 0.5rem;
+            }
+
+            .welcome-section {
+                padding: 1rem;
+            }
+
+            .welcome-title {
+                font-size: 1.3rem;
+            }
+
+            .card {
+                padding: 1rem;
+            }
+
+            .action-item {
+                padding: 0.75rem;
+            }
+
+            .action-icon {
+                font-size: 1.8rem;
+            }
+
+            .action-label {
+                font-size: 0.9rem;
+            }
+
+            .status-badge {
+                padding: 0.4rem 0.8rem;
+                font-size: 0.8rem;
+            }
+
+            .summary-value {
+                font-size: 1rem;
+            }
+
+            .summary-label {
+                font-size: 0.8rem;
+            }
+
+            .payment-date {
+                font-size: 0.9rem;
+            }
+
+            .payment-amount {
+                font-size: 0.9rem;
+            }
+
+            .payment-status {
+                font-size: 0.7rem;
+                padding: 0.2rem 0.4rem;
+            }
+
+            .notification-title {
+                font-size: 0.9rem;
+            }
+
+            .notification-text {
+                font-size: 0.8rem;
+            }
+
+            .notification-time {
+                font-size: 0.7rem;
+            }
+
+            .document-name {
+                font-size: 0.9rem;
+            }
+
+            .document-date {
+                font-size: 0.7rem;
+            }
+
+            .contact-title {
+                font-size: 0.9rem;
+            }
+
+            .contact-details {
+                font-size: 0.8rem;
+            }
+
+            .btn {
+                padding: 0.6rem 0.8rem;
+                font-size: 0.8rem;
+            }
+        }
