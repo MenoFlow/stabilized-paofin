@@ -1,5 +1,5 @@
 // src/components/demo/DemoPage.jsx
-import React, { useEffect } from 'react';
+import React from 'react';
 import { useLanguage } from '../../context/LanguageContext';
 import DemoHeader from './DemoHeader';
 import HealthScoreSection from './HealthScoreSection';
@@ -24,51 +24,44 @@ function DemoPage() {
     duration,
     income,
     expenses,
+    healthScore,
+    debtRatio,
+    monthlyPayment,
+    rav,
+    amountDisplay,
+    durationDisplay,
     showPopup,
     otherLoans,
     guarantee,
-    results,
+    maxAmount,
+    maxDuration,
     setIncome,
     setExpenses,
     setOtherLoans,
     setGuarantee,
     setShowPopup,
     handleProductSelect,
-    handleAmountChange,
-    handleDurationChange,
     handleQuickAmount,
     handleCalculate,
+    handleTestPopup,
     handlePopupSubmit,
+    closeQualificationPopup,
     formatAmount,
     formatDuration,
     getHealthColor,
     getArrowPosition,
-    productLimits
+    onAmountChange,
+    onDurationChange
   } = useDemo();
-
-  useEffect(() => {
-    // Désactiver le Service Worker en développement
-    if (process.env.NODE_ENV === 'production' && 'serviceWorker' in navigator) {
-      navigator.serviceWorker.register('./sw.js')
-        .then(registration => {
-          console.log('VINA PAOFIN SW: Enregistrement réussi', registration.scope);
-        })
-        .catch(error => {
-          console.log('VINA PAOFIN SW: Échec de l\'enregistrement', error);
-        });
-    } else {
-      console.log('Service Worker désactivé en mode développement');
-    }
-  }, []);
 
   return (
     <div className="demo-container">
       <DemoHeader onLanguageToggle={toggleLanguage} user={userInfo} />
 
       <HealthScoreSection
-        healthScore={results.capacity}
-        debtRatio={results.debtRatio}
-        rav={results.rav}
+        healthScore={healthScore}
+        debtRatio={debtRatio}
+        rav={rav}
         getHealthColor={getHealthColor}
         getArrowPosition={getArrowPosition}
         formatAmount={formatAmount}
@@ -77,12 +70,12 @@ function DemoPage() {
       <CreditParameters
         amount={amount}
         duration={duration}
-        onAmountChange={handleAmountChange}
-        onDurationChange={handleDurationChange}
+        amountDisplay={amountDisplay}
+        durationDisplay={durationDisplay}
+        onAmountChange={onAmountChange}
+        onDurationChange={onDurationChange}
         onQuickAmount={handleQuickAmount}
-        formatAmount={formatAmount}
-        formatDuration={formatDuration}
-        productLimits={productLimits}
+        productLimits={{ maxAmount, maxDuration }}
       />
 
       <SimulationSection
@@ -91,7 +84,8 @@ function DemoPage() {
         onIncomeChange={setIncome}
         onExpensesChange={setExpenses}
         onCalculate={handleCalculate}
-        onTestPopup={() => setShowPopup(true)}
+        onTestPopup={handleTestPopup}
+        debtRatio={debtRatio}
       />
 
       <ProductCarousel
@@ -108,7 +102,7 @@ function DemoPage() {
         guarantee={guarantee}
         onOtherLoansChange={setOtherLoans}
         onGuaranteeChange={setGuarantee}
-        onClose={() => setShowPopup(false)}
+        onClose={closeQualificationPopup}
         onSubmit={handlePopupSubmit}
       />
 

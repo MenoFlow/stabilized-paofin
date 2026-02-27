@@ -5,14 +5,18 @@ import { demoContent } from '../../mockData/demoData';
 import '../../styles/demo/DemoPage.css';
 
 function HealthScoreSection({ 
-  healthScore, 
-  debtRatio, 
-  rav, 
-  getHealthColor, 
+  healthScore,
+  debtRatio,
+  rav,
+  getHealthColor,
   getArrowPosition,
-  formatAmount 
+  formatAmount
 }) {
   const { language } = useLanguage();
+
+  // Le score de santé est déjà calculé dans le hook
+  const scoreValue = healthScore;
+  const arrowLeft = getArrowPosition();
 
   return (
     <div className="demo-score-section">
@@ -21,13 +25,13 @@ function HealthScoreSection({
           {demoContent.healthScore.title[language]}
         </div>
         <div className="demo-health-score" style={{ color: getHealthColor() }}>
-          {Math.round(healthScore)}
+          {scoreValue}
         </div>
         <div className="demo-health-bar-container">
           <div className="demo-health-bar">
             <div 
               className="demo-health-arrow" 
-              style={{ left: `${getArrowPosition()}px` }}
+              style={{ left: `${arrowLeft}px` }}
             ></div>
           </div>
           <div className="demo-health-labels">
@@ -38,8 +42,19 @@ function HealthScoreSection({
         </div>
         <p>{demoContent.healthScore.capacityLabel[language]}</p>
         <p className="demo-debt-ratio-display">
-          {demoContent.healthScore.debtLabel[language]} : {debtRatio.toFixed(1)}%
+          {language === 'fr' 
+            ? `Votre taux d'endettement : ${debtRatio.toFixed(1)}%`
+            : `Tahan'ny fahafahanao mihindram-bola : ${debtRatio.toFixed(1)}%`
+          }
         </p>
+        {rav < 500000 && (
+          <p style={{ color: '#e74c3c', fontSize: '12px', marginTop: '5px' }}>
+            {language === 'fr' 
+              ? '⚠️ Reste à vivre insuffisant'
+              : '⚠️ Tsy ampy ny vola sisa'
+            }
+          </p>
+        )}
       </div>
     </div>
   );

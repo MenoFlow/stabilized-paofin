@@ -10,9 +10,13 @@ function SimulationSection({
   onIncomeChange, 
   onExpensesChange,
   onCalculate,
-  onTestPopup
+  onTestPopup,
+  debtRatio // Ajouter cette prop
 }) {
   const { language } = useLanguage();
+
+  // Masquer le bouton questionnaire si le taux d'endettement > 45%
+  const showQuestionnaire = debtRatio <= 45;
 
   return (
     <div className="demo-simulation-section">
@@ -43,13 +47,15 @@ function SimulationSection({
         {demoContent.simulation.calculateBtn[language]}
       </button>
 
-      {/* <button 
-        className="demo-action-button demo-test-button" 
-        onClick={onTestPopup}
-        style={{ background: '#28a745', marginTop: '10px' }}
-      >
-        {demoContent.simulation.questionnaireBtn[language]}
-      </button> */}
+      {showQuestionnaire && (
+        <button 
+          className="demo-action-button demo-test-button" 
+          onClick={onTestPopup}
+          style={{ background: '#28a745', marginTop: '10px' }}
+        >
+          {demoContent.simulation.questionnaireBtn[language]}
+        </button>
+      )}
     </div>
   );
 }

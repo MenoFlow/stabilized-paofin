@@ -6,12 +6,12 @@ import '../../styles/demo/DemoPage.css';
 
 function CreditParameters({ 
   amount, 
-  duration, 
+  duration,
+  amountDisplay,
+  durationDisplay,
   onAmountChange, 
   onDurationChange,
   onQuickAmount,
-  formatAmount,
-  formatDuration,
   productLimits
 }) {
   const { language } = useLanguage();
@@ -23,7 +23,7 @@ function CreditParameters({
       <div className="demo-slider-section">
         <div className="demo-slider-label">
           <span>{demoContent.creditParameters.amountLabel[language]}</span>
-          <span className="demo-slider-value">{formatAmount(amount)}</span>
+          <span className="demo-slider-value">{amountDisplay}</span>
         </div>
         <input
           type="range"
@@ -32,7 +32,7 @@ function CreditParameters({
           max={productLimits.maxAmount}
           value={amount}
           step="100000"
-          onChange={(e) => onAmountChange(parseInt(e.target.value))}
+          onChange={(e) => onAmountChange(e.target.value)}
         />
         <div className="demo-quick-amounts">
           {demoContent.creditParameters.quickAmounts.map((item, index) => (
@@ -50,7 +50,7 @@ function CreditParameters({
       <div className="demo-slider-section">
         <div className="demo-slider-label">
           <span>{demoContent.creditParameters.durationLabel[language]}</span>
-          <span className="demo-slider-value">{formatDuration(duration)}</span>
+          <span className="demo-slider-value">{durationDisplay}</span>
         </div>
         <input
           type="range"
@@ -58,7 +58,7 @@ function CreditParameters({
           min="6"
           max={productLimits.maxDuration}
           value={duration}
-          onChange={(e) => onDurationChange(parseInt(e.target.value))}
+          onChange={(e) => onDurationChange(e.target.value)}
         />
       </div>
     </div>

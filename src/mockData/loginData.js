@@ -81,7 +81,7 @@ export const clientSection = {
     },
     {
       text: { fr: 'Démo Mobile', mg: 'Demo Finday' },
-      link: '/demo', // Chemin vers la page demo
+      link: '/demo-mobile', // Chemin vers la page demo
       className: 'signup-btn demo-btn'
     }
   ]
