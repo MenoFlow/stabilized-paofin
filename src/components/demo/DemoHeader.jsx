@@ -2,7 +2,7 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useLanguage } from '../../context/LanguageContext';
-import { LucideIcon } from '../../components/common/LucideIcon'; // Import du composant LucideIcon
+import LucideIcon from '../../components/common/LucideIcon'; // Import du composant LucideIcon
 import '../../styles/demo/DemoPage.css';
 
 function DemoHeader({ user }) {
