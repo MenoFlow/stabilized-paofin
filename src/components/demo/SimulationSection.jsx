@@ -1,7 +1,7 @@
 // src/components/demo/SimulationSection.jsx
 import React from 'react';
 import { useLanguage } from '../../context/LanguageContext';
-import { demoContent } from '../../mockData/demoData';
+import { demoTranslations } from '../../mockData/demoTranslations';
 import '../../styles/demo/DemoPage.css';
 
 function SimulationSection({ 
@@ -11,20 +11,20 @@ function SimulationSection({
   onExpensesChange,
   onCalculate,
   onTestPopup,
-  debtRatio // Ajouter cette prop
+  debtRatio
 }) {
   const { language } = useLanguage();
+  const t = demoTranslations;
 
-  // Masquer le bouton questionnaire si le taux d'endettement > 45%
   const showQuestionnaire = debtRatio <= 45;
 
   return (
     <div className="demo-simulation-section">
-      <h2>{demoContent.simulation.title[language]}</h2>
+      <h2>{t.simulation.title[language]}</h2>
 
       <div className="demo-financial-inputs">
         <div className="demo-input-group">
-          <label>{demoContent.simulation.incomeLabel[language]}</label>
+          <label>{t.simulation.incomeLabel[language]}</label>
           <input
             type="number"
             value={income}
@@ -33,7 +33,7 @@ function SimulationSection({
           />
         </div>
         <div className="demo-input-group">
-          <label>{demoContent.simulation.expensesLabel[language]}</label>
+          <label>{t.simulation.expensesLabel[language]}</label>
           <input
             type="number"
             value={expenses}
@@ -44,7 +44,7 @@ function SimulationSection({
       </div>
 
       <button className="demo-action-button" onClick={onCalculate}>
-        {demoContent.simulation.calculateBtn[language]}
+        {t.simulation.calculateBtn[language]}
       </button>
 
       {showQuestionnaire && (
@@ -53,7 +53,7 @@ function SimulationSection({
           onClick={onTestPopup}
           style={{ background: '#28a745', marginTop: '10px' }}
         >
-          {demoContent.simulation.questionnaireBtn[language]}
+          {t.simulation.questionnaireBtn[language]}
         </button>
       )}
     </div>

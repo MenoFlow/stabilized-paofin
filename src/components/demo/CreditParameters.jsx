@@ -1,7 +1,7 @@
 // src/components/demo/CreditParameters.jsx
 import React from 'react';
 import { useLanguage } from '../../context/LanguageContext';
-import { demoContent } from '../../mockData/demoData';
+import { demoTranslations } from '../../mockData/demoTranslations';
 import '../../styles/demo/DemoPage.css';
 
 function CreditParameters({ 
@@ -15,14 +15,23 @@ function CreditParameters({
   productLimits
 }) {
   const { language } = useLanguage();
+  const t = demoTranslations;
+
+  const quickAmounts = [
+    { value: 500000, label: "500K Ar" },
+    { value: 1000000, label: "1M Ar" },
+    { value: 2000000, label: "2M Ar" },
+    { value: 10000000, label: "10M Ar" }
+  ];
 
   return (
-    <div className="demo-credit-parameters">
-      <h2>{demoContent.creditParameters.title[language]}</h2>
+
+    <div className="demo-marketplace-section">
+      <h2>{t.creditParameters.title[language]}</h2>
 
       <div className="demo-slider-section">
         <div className="demo-slider-label">
-          <span>{demoContent.creditParameters.amountLabel[language]}</span>
+          <span>{t.creditParameters.amountLabel[language]}</span>
           <span className="demo-slider-value">{amountDisplay}</span>
         </div>
         <input
@@ -35,7 +44,7 @@ function CreditParameters({
           onChange={(e) => onAmountChange(e.target.value)}
         />
         <div className="demo-quick-amounts">
-          {demoContent.creditParameters.quickAmounts.map((item, index) => (
+          {quickAmounts.map((item, index) => (
             <button
               key={index}
               className={`demo-quick-amount ${amount === item.value ? 'selected' : ''}`}
@@ -49,7 +58,7 @@ function CreditParameters({
 
       <div className="demo-slider-section">
         <div className="demo-slider-label">
-          <span>{demoContent.creditParameters.durationLabel[language]}</span>
+          <span>{t.creditParameters.durationLabel[language]}</span>
           <span className="demo-slider-value">{durationDisplay}</span>
         </div>
         <input

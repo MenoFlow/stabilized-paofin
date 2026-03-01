@@ -1,7 +1,7 @@
-// src/components/dg/PerformanceChart.jsx (version avec vrais graphiques)
+// src/components/dg/PerformanceChart.jsx
 import React from 'react';
 import { useLanguage } from '../../context/LanguageContext';
-import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
+import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
 
 // Données mockées pour le graphique
 const performanceHistory = [
@@ -39,7 +39,7 @@ function PerformanceChart({ data }) {
       
       <div className="chart-container" style={{ height: '300px', width: '100%' }}>
         <ResponsiveContainer width="100%" height="100%">
-          <LineChart
+          <BarChart
             data={performanceHistory}
             margin={{ top: 20, right: 30, left: 20, bottom: 10 }}
           >
@@ -54,32 +54,28 @@ function PerformanceChart({ data }) {
               }} 
             />
             <Legend />
-            <Line 
-              type="monotone" 
+            <Bar 
               dataKey="revenus" 
               name={t.revenus}
-              stroke="#003399" 
-              strokeWidth={2}
-              dot={{ fill: '#003399', r: 4 }}
-              activeDot={{ r: 6 }}
+              fill="#003399" 
+              radius={[4, 4, 0, 0]}
+              barSize={20}
             />
-            <Line 
-              type="monotone" 
+            <Bar 
               dataKey="credit" 
               name={t.credit}
-              stroke="#00AEEF" 
-              strokeWidth={2}
-              dot={{ fill: '#00AEEF', r: 4 }}
+              fill="#00AEEF" 
+              radius={[4, 4, 0, 0]}
+              barSize={20}
             />
-            <Line 
-              type="monotone" 
+            <Bar 
               dataKey="clients" 
               name={t.clients}
-              stroke="#FFC107" 
-              strokeWidth={2}
-              dot={{ fill: '#FFC107', r: 4 }}
+              fill="#FFC107" 
+              radius={[4, 4, 0, 0]}
+              barSize={20}
             />
-          </LineChart>
+          </BarChart>
         </ResponsiveContainer>
       </div>
 

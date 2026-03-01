@@ -1,7 +1,7 @@
 // src/components/demo/QualificationPopup.jsx
 import React from 'react';
 import { useLanguage } from '../../context/LanguageContext';
-import { demoContent } from '../../mockData/demoData';
+import { demoTranslations } from '../../mockData/demoTranslations';
 import '../../styles/demo/DemoPage.css';
 
 function QualificationPopup({ 
@@ -14,17 +14,18 @@ function QualificationPopup({
   onSubmit 
 }) {
   const { language } = useLanguage();
+  const t = demoTranslations;
 
   if (!show) return null;
 
   return (
     <div className="demo-qualification-popup">
       <div className="demo-popup-content">
-        <div className="demo-popup-title">{demoContent.qualificationPopup.title[language]}</div>
-        <div className="demo-popup-subtitle">{demoContent.qualificationPopup.subtitle[language]}</div>
+        <div className="demo-popup-title">{t.qualificationPopup.title[language]}</div>
+        <div className="demo-popup-subtitle">{t.qualificationPopup.subtitle[language]}</div>
 
         <div className="demo-popup-input-group">
-          <label>{demoContent.qualificationPopup.otherLoansLabel[language]}</label>
+          <label>{t.qualificationPopup.otherLoansLabel[language]}</label>
           <input
             type="number"
             value={otherLoans}
@@ -34,20 +35,20 @@ function QualificationPopup({
         </div>
 
         <div className="demo-popup-input-group">
-          <label>{demoContent.qualificationPopup.guaranteeLabel[language]}</label>
+          <label>{t.qualificationPopup.guaranteeLabel[language]}</label>
           <select value={guarantee} onChange={(e) => onGuaranteeChange(e.target.value)}>
-            {demoContent.qualificationPopup.guarantees.map((g, index) => (
-              <option key={index} value={g.value}>{g.label[language]}</option>
-            ))}
+            <option value="salary">{t.qualificationPopup.guarantees.salary[language]}</option>
+            <option value="material">{t.qualificationPopup.guarantees.material[language]}</option>
+            <option value="property">{t.qualificationPopup.guarantees.property[language]}</option>
           </select>
         </div>
 
         <div className="demo-popup-buttons">
           <button className="demo-popup-btn secondary" onClick={onClose}>
-            {demoContent.qualificationPopup.cancelBtn[language]}
+            {t.qualificationPopup.cancelBtn[language]}
           </button>
           <button className="demo-popup-btn primary" onClick={onSubmit}>
-            {demoContent.qualificationPopup.confirmBtn[language]}
+            {t.qualificationPopup.confirmBtn[language]}
           </button>
         </div>
       </div>

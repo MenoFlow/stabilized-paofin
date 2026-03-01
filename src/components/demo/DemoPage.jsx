@@ -1,6 +1,7 @@
 // src/components/demo/DemoPage.jsx
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useLanguage } from '../../context/LanguageContext';
+import LanguageToggle from '../common/LanguageToggle';
 import DemoHeader from './DemoHeader';
 import HealthScoreSection from './HealthScoreSection';
 import CreditParameters from './CreditParameters';
@@ -15,7 +16,7 @@ import { demoContent, userInfo } from '../../mockData/demoData';
 import '../../styles/demo/DemoPage.css';
 
 function DemoPage() {
-  const { language, toggleLanguage } = useLanguage();
+  const { language } = useLanguage();
   
   const {
     selectedProduct,
@@ -39,7 +40,6 @@ function DemoPage() {
     setExpenses,
     setOtherLoans,
     setGuarantee,
-    setShowPopup,
     handleProductSelect,
     handleQuickAmount,
     handleCalculate,
@@ -56,7 +56,10 @@ function DemoPage() {
 
   return (
     <div className="demo-container">
-      <DemoHeader onLanguageToggle={toggleLanguage} user={userInfo} />
+      <DemoHeader user={userInfo} />
+      
+      {/* LanguageToggle est déjà inclus dans DemoHeader, mais si vous voulez le garder séparé : */}
+      {/* <LanguageToggle /> */}
 
       <HealthScoreSection
         healthScore={healthScore}

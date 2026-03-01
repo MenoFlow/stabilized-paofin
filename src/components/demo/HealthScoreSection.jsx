@@ -2,7 +2,7 @@
 import React from 'react';
 import { AlertTriangle } from 'lucide-react';
 import { useLanguage } from '../../context/LanguageContext';
-import { demoContent } from '../../mockData/demoData';
+import { demoTranslations } from '../../mockData/demoTranslations';
 import '../../styles/demo/DemoPage.css';
 
 function HealthScoreSection({ 
@@ -14,19 +14,18 @@ function HealthScoreSection({
   formatAmount
 }) {
   const { language } = useLanguage();
+  const t = demoTranslations;
 
-  // Le score de santé est déjà calculé dans le hook
-  const scoreValue = healthScore;
   const arrowLeft = getArrowPosition();
 
   return (
     <div className="demo-score-section">
       <div className="demo-gauge-container">
         <div className="demo-score-label">
-          {demoContent.healthScore.title[language]}
+          {t.healthScore.title[language]}
         </div>
         <div className="demo-health-score" style={{ color: getHealthColor() }}>
-          {scoreValue}
+          {Math.round(healthScore)}
         </div>
         <div className="demo-health-bar-container">
           <div className="demo-health-bar">
@@ -36,17 +35,14 @@ function HealthScoreSection({
             ></div>
           </div>
           <div className="demo-health-labels">
-            {demoContent.healthScore.labels.map((label, index) => (
+            {t.healthScore.labels.map((label, index) => (
               <span key={index} dangerouslySetInnerHTML={{ __html: label[language] }} />
             ))}
           </div>
         </div>
-        <p>{demoContent.healthScore.capacityLabel[language]}</p>
+        <p>{t.healthScore.capacityLabel[language]}</p>
         <p className="demo-debt-ratio-display">
-          {language === 'fr' 
-            ? `Votre taux d'endettement : ${debtRatio.toFixed(1)}%`
-            : `Tahan'ny fahafahanao mihindram-bola : ${debtRatio.toFixed(1)}%`
-          }
+          {t.healthScore.debtLabel[language]} : {debtRatio.toFixed(1)}%
         </p>
         {rav < 500000 && (
           <p style={{ color: '#e74c3c', fontSize: '12px', marginTop: '5px', display: 'flex', alignItems: 'center', gap: '5px' }}>
