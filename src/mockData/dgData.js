@@ -82,7 +82,7 @@ export const executiveAlerts = [
   },
   {
     type: "critical",
-    icon: "⏰",
+    icon: "Clock",
     title: { fr: "Retards Critiques", mg: "Fahatarana Mavesatra" },
     description: { 
       fr: "12 clients avec retards > 7 jours",
@@ -262,5 +262,5 @@ export const recommendedActions = [
 export const userInfo = {
   name: "Rakotonirina Jean",
   role: { fr: "Directeur Général", mg: "Tale Jeneraly" },
-  avatar: "👤"
+  avatar: "User"
 };

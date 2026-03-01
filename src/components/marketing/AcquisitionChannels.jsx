@@ -1,6 +1,7 @@
 // src/components/marketing/AcquisitionChannels.jsx
 import React from 'react';
 import { useLanguage } from '../../context/LanguageContext';
+import LucideIcon from '../common/LucideIcon';
 
 function AcquisitionChannels({ channels }) {
   const { language } = useLanguage();
@@ -11,7 +12,9 @@ function AcquisitionChannels({ channels }) {
       <div className="channels-grid">
         {channels.channels.map((channel, index) => (
           <div key={index} className="channel-item">
-            <div className="channel-icon">{channel.icon}</div>
+            <div className="channel-icon">
+              <LucideIcon name={channel.icon} size={24} />
+            </div>
             <div className="channel-name">{channel.name[language]}</div>
             <div className="channel-conversion">
               {channel.conversion} {language === 'fr' ? 'des conversions' : 'ny fiovana'}

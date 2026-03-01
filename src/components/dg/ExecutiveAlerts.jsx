@@ -1,6 +1,7 @@
 // src/components/dg/ExecutiveAlerts.jsx
 import React from 'react';
 import { useLanguage } from '../../context/LanguageContext';
+import LucideIcon from '../common/LucideIcon';
 
 function ExecutiveAlerts({ alerts }) {
   const { language } = useLanguage();
@@ -20,7 +21,9 @@ function ExecutiveAlerts({ alerts }) {
       <div className="alerts-executive">
         {alerts.map((alert, index) => (
           <div key={index} className={getAlertClass(alert.type)}>
-            <div className="alert-icon">{alert.icon}</div>
+            <div className="alert-icon">
+              <LucideIcon name={alert.icon} size={20} />
+            </div>
             <div className="alert-content">
               <div className="alert-title">{alert.title[language]}</div>
               <div className="alert-description">{alert.description[language]}</div>

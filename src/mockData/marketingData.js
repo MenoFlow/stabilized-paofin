@@ -62,8 +62,8 @@ export const acquisitionChannels = {
   channels: [
     { icon: "■", name: { fr: "Mobile App", mg: "Fampiasa finday" }, conversion: "45%" },
     { icon: "●", name: { fr: "Site Web", mg: "Tranokala" }, conversion: "28%" },
-    { icon: "👥", name: { fr: "Référencement", mg: "Fanondroana" }, conversion: "18%" },
-    { icon: "📢", name: { fr: "Publicité", mg: "Dokam-barotra" }, conversion: "9%" }
+    { icon: "Users", name: { fr: "Référencement", mg: "Fanondroana" }, conversion: "18%" },
+    { icon: "Megaphone", name: { fr: "Publicité", mg: "Dokam-barotra" }, conversion: "9%" }
   ],
   performance: [
     { name: { fr: "Mobile App", mg: "Fampiasa finday" }, value: 45 },
@@ -158,5 +158,5 @@ export const insights = {
 export const userInfo = {
   name: "Raharison Marie",
   role: { fr: "Dir. Marketing", mg: "Talen'ny Marketing" },
-  avatar: "👤"
+  avatar: "User"
 };

@@ -1,5 +1,6 @@
 // src/components/signup/PersonalInfoSection.jsx
 import React from 'react';
+import { User } from 'lucide-react';
 import { useLanguage } from '../../context/LanguageContext';
 import { genderOptions } from '../../mockData/signupData';
 
@@ -9,7 +10,7 @@ function PersonalInfoSection({ formData, handleChange }) {
   return (
     <div className="form-section">
       <div className="section-title">
-        <span>👤</span>
+        <User className="section-icon" size={20} />
         <span>{language === 'fr' ? 'Informations personnelles' : 'Fampahalalana manokana'}</span>
       </div>
 

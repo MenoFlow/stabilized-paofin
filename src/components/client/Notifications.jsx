@@ -1,6 +1,7 @@
 // src/components/client/Notifications.jsx
 import React from 'react';
 import { useLanguage } from '../../context/LanguageContext';
+import LucideIcon from '../common/LucideIcon';
 
 function Notifications({ notifications, onNotificationClick }) {
   const { language } = useLanguage();
@@ -16,12 +17,14 @@ function Notifications({ notifications, onNotificationClick }) {
             className={`notification-item ${notif.unread ? 'unread' : ''}`}
             onClick={() => onNotificationClick(notif.id)}
           >
-            <div className="notification-icon">{notif.icon}</div>
-            <div className="notification-content">
-              <div className="notification-title">{notif.title[language]}</div> {/* CORRIGÉ */}
-              <div className="notification-text">{notif.text[language]}</div> {/* CORRIGÉ */}
+            <div className="notification-icon">
+              <LucideIcon name={notif.icon} size={20} />
             </div>
-            <div className="notification-time">{notif.time[language]}</div> {/* CORRIGÉ */}
+            <div className="notification-content">
+              <div className="notification-title">{notif.title[language]}</div>
+              <div className="notification-text">{notif.text[language]}</div>
+            </div>
+            <div className="notification-time">{notif.time[language]}</div>
           </div>
         ))}
       </div>

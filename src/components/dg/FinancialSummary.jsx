@@ -1,5 +1,6 @@
 // src/components/dg/FinancialSummary.jsx
 import React from 'react';
+import { DollarSign } from 'lucide-react';
 import { useLanguage } from '../../context/LanguageContext';
 
 function FinancialSummary({ data }) {
@@ -7,7 +8,7 @@ function FinancialSummary({ data }) {
 
   return (
     <div className="card">
-      <h3>💰 Résumé Financier</h3>
+      <h3><DollarSign className="inline-icon" size={20} /> Résumé Financier</h3>
       <div className="financial-summary">
         <div className="financial-item">
           <div className="financial-amount">{data.monthly.amount}</div>

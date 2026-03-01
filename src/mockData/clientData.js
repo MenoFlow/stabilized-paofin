@@ -86,7 +86,7 @@ export const notifications = [
   },
   {
     id: 2,
-    icon: "▶",
+    icon: "Play",
     title: { fr: "Paiement confirmé", mg: "Fandoavana voamarina" },
     text: { fr: "Votre paiement de 1,200,000 Ar a été traité avec succès", mg: "Ny fandoavana 1,200,000 Ar dia voaray soa aman-tsara" },
     time: { fr: "Il y a 1 jour", mg: "1 andro lasa izay" },
@@ -134,21 +134,21 @@ export const documents = [
   },
   {
     id: "insurance",
-    icon: "🛡️",
+    icon: "Shield",
     name: { fr: "Attestation Assurance", mg: "Fanekena Antoka" },
     date: "15 Jan 2026",
     dateMG: "15 Jan 2026"
   },
   {
     id: "payment",
-    icon: "🧾",
+    icon: "Receipt",
     name: { fr: "Reçus de Paiement", mg: "Tsatia Fandoavana" },
     date: "25 Déc 2025",
     dateMG: "25 Des 2025"
   },
   {
     id: "upload",
-    icon: "⬆️",
+    icon: "Upload",
     name: { fr: "Télécharger Document", mg: "Hampiditra antontan-taratasy" },
     date: { fr: "Nouveau", mg: "Vaovao" },
     isUpload: true

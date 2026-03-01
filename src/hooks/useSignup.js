@@ -65,8 +65,8 @@ export function useSignup() {
       setIsLoading(false);
       
       const successMessage = language === 'mg'
-        ? '✓ Kaonty voaforona soa aman-tsara !\n\n📧 Mailaka fanamafisana nalefa\n📱 SMS fanamafisana nalefa\n\nRedirection mankany amin\'ny espace client...'
-        : '✓ Compte créé avec succès !\n\n📧 Email de confirmation envoyé\n📱 SMS de confirmation envoyé\n\nRedirection vers votre espace client...';
+        ? 'Kaonty voaforona soa aman-tsara !\n\nEmail fanamafisana nalefa\nSMS fanamafisana nalefa\n\nRedirection mankany amin\'ny espace client...'
+        : 'Compte créé avec succès !\n\nEmail de confirmation envoyé\nSMS de confirmation envoyé\n\nRedirection vers votre espace client...';
       
       alert(successMessage);
       navigate('/espace-client');

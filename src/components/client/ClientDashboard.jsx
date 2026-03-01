@@ -116,8 +116,8 @@ function ClientDashboard() {
 
   const handleChat = () => {
     alert(language === 'mg'
-      ? '💬 Resaka an-tserasera\n\nMifandray amin\'ny service client...'
-      : '💬 Chat en ligne\n\nConnexion au service client...');
+      ? 'Resaka an-tserasera\n\nMifandray amin\'ny service client...'
+      : 'Chat en ligne\n\nConnexion au service client...');
   };
 
   const handleScheduleCall = () => {

@@ -1,5 +1,6 @@
 // src/components/signup/ProfessionalSection.jsx
 import React from 'react';
+import { Briefcase } from 'lucide-react';
 import { useLanguage } from '../../context/LanguageContext';
 import { professionOptions } from '../../mockData/signupData';
 
@@ -9,7 +10,7 @@ function ProfessionalSection({ formData, handleChange }) {
   return (
     <div className="form-section">
       <div className="section-title">
-        <span>💼</span>
+        <Briefcase className="section-icon" size={20} />
         <span>{language === 'fr' ? 'Informations professionnelles' : 'Fampahalalana asa'}</span>
       </div>
 

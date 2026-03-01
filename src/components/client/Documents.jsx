@@ -1,6 +1,7 @@
 // src/components/client/Documents.jsx
 import React from 'react';
 import { useLanguage } from '../../context/LanguageContext';
+import LucideIcon from '../common/LucideIcon';
 
 function Documents({ documents, onDownload, onUpload }) {
   const { language } = useLanguage();
@@ -33,9 +34,11 @@ function Documents({ documents, onDownload, onUpload }) {
             className="document-item" 
             onClick={() => doc.isUpload ? onUpload() : onDownload(doc.id)}
           >
-            <div className="document-icon">{doc.icon}</div>
+            <div className="document-icon">
+              <LucideIcon name={doc.icon} size={24} />
+            </div>
             <div className="document-name">{doc.name[language]}</div>
-            <div className="document-date">{getDateText(doc)}</div> {/* CORRIGÉ */}
+            <div className="document-date">{getDateText(doc)}</div>
           </div>
         ))}
       </div>

@@ -2,7 +2,7 @@
 export const loginCards = [
   {
     id: 'dg',
-    icon: '🏢',
+    icon: 'Building2',
     title: {
       fr: 'Direction Générale',
       mg: 'Fitantanana Ankapobeny'
@@ -16,7 +16,7 @@ export const loginCards = [
   },
   {
     id: 'operations',
-    icon: '⚙️',
+    icon: 'Settings',
     title: {
       fr: 'Directeur Opérations',
       mg: 'Talen\'ny Asa'
@@ -30,7 +30,7 @@ export const loginCards = [
   },
   {
     id: 'marketing',
-    icon: '📊',
+    icon: 'BarChart3',
     title: {
       fr: 'Marketing & Commercial',
       mg: 'Marketing sy Varotra'
@@ -44,7 +44,7 @@ export const loginCards = [
   },
   {
     id: 'commercial',
-    icon: '👤',
+    icon: 'User',
     title: {
       fr: 'Agent Commercial',
       mg: 'Mpivarotra'

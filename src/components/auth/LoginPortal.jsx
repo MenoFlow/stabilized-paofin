@@ -1,15 +1,16 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import LanguageToggle from '../common/LanguageToggle';
 import LoginForm from './LoginForm';
-import ClientSignup from './ClientSignup';
 import { clientSection } from '../../mockData/loginData';
+import { translations } from '../../mockData/translations';
+import { useLanguage } from '../../context/LanguageContext';
 import { Link } from 'react-router-dom';
 import logo from '../../assets/logo.jpeg';
+import logoPaositra from '../../assets/logo-paositra.png';
 import '../../styles/auth/LoginPortal.css';
 
 function LoginPortal() {
-  const [language, setLanguage] = useState('fr');
-  const [loginError, setLoginError] = useState('');
+  const { language } = useLanguage();
 
   useEffect(() => {
     document.documentElement.lang = language === 'mg' ? 'mg' : 'fr';
@@ -39,23 +40,20 @@ function LoginPortal() {
       <div className="login-container">
         <div className="header-portal">
           <div className="logo">
+            <img 
+              src={logoPaositra} 
+              alt="PAOSITRA Logo" 
+              className="header-logo"
+            />
             <div>
-              <h1 className="title">
-                {language === 'fr' ? 'VINA Platform' : 'Sehatra VINA'}
-              </h1>
+              <h1 className="title">{translations.loginPortal.title[language]}</h1>
               <p className="subtitle">
-                {language === 'fr' 
-                  ? 'Portail de Connexion' 
-                  : 'Vavahadin\'ny Fidirana'
-                }
+                {translations.loginPortal.subtitle[language]}
               </p>
             </div>
           </div>
           
-          <LanguageToggle 
-            currentLanguage={language}
-            onLanguageChange={setLanguage}
-          />
+          <LanguageToggle />
         </div>
 
         <div className="login-content">
@@ -65,27 +63,56 @@ function LoginPortal() {
               alt="PAOFIN Logo" 
               className="logo-large"
             />
-            <h2 className="welcome-title">Tongasoa</h2>
+            <h2 className="welcome-title">{translations.loginPortal.welcomeTitle[language]}</h2>
             <h3 className="welcome-subtitle">
-              {language === 'fr' 
-                ? 'Ianao paré, vinanao tratra e' 
-                : 'Ianao paré, vinanao tratra e'
-              }
+              {translations.loginPortal.welcomeSubtitle[language]}
             </h3>
           </div>
 
           <div className="login-single">
             <LoginForm 
-              language={language}
               onLoginSuccess={handleLoginSuccess}
             />
           </div>
         </div>
 
-        <ClientSignup 
-          data={clientSection}
-          language={language}
-        />
+        <div className="demo-buttons-section">
+          <div className="demo-button-wrapper">
+            <p className="demo-button-label">
+              {translations.loginPortal.simulationLabel[language]}
+            </p>
+            <Link 
+              to={clientSection.buttons[2].link} 
+              className={clientSection.buttons[2].className}
+            >
+              {translations.loginPortal.demoButton[language]}
+            </Link>
+          </div>
+
+          <div className="demo-button-wrapper">
+            <p className="demo-button-label">
+              {translations.loginPortal.signupLabel[language]}
+            </p>
+            <Link 
+              to={clientSection.buttons[0].link} 
+              className={clientSection.buttons[0].className}
+            >
+              {translations.loginPortal.createAccountButton[language]}
+            </Link>
+          </div>
+
+          <div className="demo-button-wrapper">
+            <p className="demo-button-label">
+              {translations.loginPortal.clientAccessLabel[language]}
+            </p>
+            <Link 
+              to={clientSection.buttons[1].link} 
+              className={clientSection.buttons[1].className}
+            >
+              {translations.loginPortal.clientLoginButton[language]}
+            </Link>
+          </div>
+        </div>
       </div>
     </div>
   );

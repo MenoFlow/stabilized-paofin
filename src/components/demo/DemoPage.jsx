@@ -67,32 +67,36 @@ function DemoPage() {
         formatAmount={formatAmount}
       />
 
-      <CreditParameters
-        amount={amount}
-        duration={duration}
-        amountDisplay={amountDisplay}
-        durationDisplay={durationDisplay}
-        onAmountChange={onAmountChange}
-        onDurationChange={onDurationChange}
-        onQuickAmount={handleQuickAmount}
-        productLimits={{ maxAmount, maxDuration }}
-      />
+      <div className="demo-simulation-product-wrapper">
+        <div className="demo-left-column">
+          <SimulationSection
+            income={income}
+            expenses={expenses}
+            onIncomeChange={setIncome}
+            onExpensesChange={setExpenses}
+            onCalculate={handleCalculate}
+            onTestPopup={handleTestPopup}
+            debtRatio={debtRatio}
+          />
 
-      <SimulationSection
-        income={income}
-        expenses={expenses}
-        onIncomeChange={setIncome}
-        onExpensesChange={setExpenses}
-        onCalculate={handleCalculate}
-        onTestPopup={handleTestPopup}
-        debtRatio={debtRatio}
-      />
+          <CreditParameters
+            amount={amount}
+            duration={duration}
+            amountDisplay={amountDisplay}
+            durationDisplay={durationDisplay}
+            onAmountChange={onAmountChange}
+            onDurationChange={onDurationChange}
+            onQuickAmount={handleQuickAmount}
+            productLimits={{ maxAmount, maxDuration }}
+          />
+        </div>
 
-      <ProductCarousel
-        products={demoContent.products}
-        selectedIndex={productIndex}
-        onSelect={handleProductSelect}
-      />
+        <ProductCarousel
+          products={demoContent.products}
+          selectedIndex={productIndex}
+          onSelect={handleProductSelect}
+        />
+      </div>
 
       <MarketplacePartners />
 

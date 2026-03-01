@@ -55,7 +55,7 @@ function LoginForm() {
   return (
     <div className="login-card unique-form">
       <div className="login-title">
-        {language === 'fr' ? 'Connexion Sécurisée' : 'Fidirana Azo Antoka'}
+        {translations.loginPortal.secureLogin[language]}
       </div>
       
       <form className="login-form" onSubmit={handleSubmit}>
@@ -118,16 +118,13 @@ function LoginForm() {
             className="demo-toggle"
             onClick={() => setShowDemo(!showDemo)}
           >
-            {language === 'fr' ? 'Comptes de démo' : 'Kaonty demo'}
+            {translations.common.demoAccounts[language]}
           </button>
           
           {showDemo && (
             <div className="demo-accounts">
               <p className="demo-note">
-                {language === 'fr' 
-                  ? 'Cliquez sur un compte pour le remplir automatiquement :'
-                  : 'Tsindrio ny kaonty iray mba hamenoana azy ho azy :'
-                }
+                {translations.common.demoNote[language]}
               </p>
               <div className="demo-grid">
                 {mockUsers.map((user) => (

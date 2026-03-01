@@ -33,6 +33,12 @@
 
         .logo img {
             height: 60px;
+            width: auto;
+            object-fit: contain;
+            padding: 6px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 82, 165, 0.15);
         }
 
         .title {

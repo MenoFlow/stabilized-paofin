@@ -1,5 +1,6 @@
 // src/components/dg/RiskAnalysis.jsx
 import React from 'react';
+import { Scale } from 'lucide-react';
 import { useLanguage } from '../../context/LanguageContext';
 
 function RiskAnalysis({ data }) {
@@ -25,7 +26,7 @@ function RiskAnalysis({ data }) {
 
   return (
     <div className="card">
-      <h3>⚖️ Analyse des Risques</h3>
+      <h3><Scale className="inline-icon" size={20} /> Analyse des Risques</h3>
 
       <div style={{ marginBottom: '1.5rem' }}>
         <h4>Niveau de Risque Global</h4>

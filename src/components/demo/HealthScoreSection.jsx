@@ -1,5 +1,6 @@
 // src/components/demo/HealthScoreSection.jsx
 import React from 'react';
+import { AlertTriangle } from 'lucide-react';
 import { useLanguage } from '../../context/LanguageContext';
 import { demoContent } from '../../mockData/demoData';
 import '../../styles/demo/DemoPage.css';
@@ -48,10 +49,11 @@ function HealthScoreSection({
           }
         </p>
         {rav < 500000 && (
-          <p style={{ color: '#e74c3c', fontSize: '12px', marginTop: '5px' }}>
+          <p style={{ color: '#e74c3c', fontSize: '12px', marginTop: '5px', display: 'flex', alignItems: 'center', gap: '5px' }}>
+            <AlertTriangle size={14} />
             {language === 'fr' 
-              ? '⚠️ Reste à vivre insuffisant'
-              : '⚠️ Tsy ampy ny vola sisa'
+              ? 'Reste à vivre insuffisant'
+              : 'Tsy ampy ny vola sisa'
             }
           </p>
         )}

@@ -1,5 +1,6 @@
 // src/components/dg/DepartmentPerformance.jsx
 import React from 'react';
+import { Building2 } from 'lucide-react';
 import { useLanguage } from '../../context/LanguageContext';
 
 function DepartmentPerformance({ departments }) {
@@ -7,7 +8,7 @@ function DepartmentPerformance({ departments }) {
 
   return (
     <div className="card full-width">
-      <h3>🏢 Performance par Département</h3>
+      <h3><Building2 className="inline-icon" size={20} /> Performance par Département</h3>
       <div className="departments-grid">
         {departments.map((dept, index) => (
           <div key={index} className="department-card">

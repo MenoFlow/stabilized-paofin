@@ -1,6 +1,8 @@
 // src/components/demo/DemoHeader.jsx
 import React from 'react';
 import { useLanguage } from '../../context/LanguageContext';
+import logoPaositra from '../../assets/logo-paositra.png';
+import LucideIcon from '../common/LucideIcon';
 import '../../styles/demo/DemoPage.css';
 
 function DemoHeader({ onLanguageToggle, user }) {
@@ -11,15 +13,10 @@ function DemoHeader({ onLanguageToggle, user }) {
       <div className="demo-header-left">
         <div className="demo-logo-section">
           <img 
-            src="./mobile/assets/images/Logo_paofin.png.png" 
-            alt="PAOFIN" 
+            src={logoPaositra} 
+            alt="PAOSITRA Logo" 
             className="demo-logo-img"
-            onError={(e) => {
-              e.target.style.display = 'none';
-              e.target.nextElementSibling.style.display = 'flex';
-            }}
           />
-          <div className="demo-logo" style={{ display: 'none' }}>P</div>
         </div>
       </div>
       <div className="demo-header-right">
@@ -27,7 +24,7 @@ function DemoHeader({ onLanguageToggle, user }) {
           {language === 'fr' ? 'FR | MG' : 'MG | FR'}
         </button>
         <div className="demo-profile-btn">
-          <span>{user.avatar}</span>
+          <LucideIcon name={user.avatar} size={20} />
         </div>
       </div>
     </div>

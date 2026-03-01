@@ -25,7 +25,7 @@ export function useClient() {
       if (Math.random() > 0.95) { // 5% de chance
         const newNotification = {
           id: Date.now(),
-          icon: "📢",
+          icon: "Megaphone",
           title: { fr: "Nouvelle information", mg: "Vaovao vaovao" },
           text: { fr: "Une mise à jour importante concernant votre crédit", mg: "Vaovao vaovao momba ny trosanao" },
           time: { fr: "À l'instant", mg: "Amin'izao fotoana izao" },
