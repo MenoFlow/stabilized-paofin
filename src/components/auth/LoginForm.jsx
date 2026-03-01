@@ -29,8 +29,8 @@ function LoginForm() {
         localStorage.setItem('currentUser', JSON.stringify(user));
         
         const welcomeMessage = language === 'fr'
-          ? `✅ Connexion réussie !\n\nBienvenue ${user.roleName.fr}`
-          : `✅ Fidirana nahomby !\n\nTonga soa eto ${user.roleName.mg}`;
+          ? `Connexion réussie !\n\nBienvenue ${user.roleName.fr}`
+          : `Fidirana nahomby !\n\nTonga soa eto ${user.roleName.mg}`;
         
         alert(welcomeMessage);
         
@@ -54,7 +54,6 @@ function LoginForm() {
 
   return (
     <div className="login-card unique-form">
-      <div className="login-icon">🔐</div>
       <div className="login-title">
         {language === 'fr' ? 'Connexion Sécurisée' : 'Fidirana Azo Antoka'}
       </div>
@@ -119,7 +118,7 @@ function LoginForm() {
             className="demo-toggle"
             onClick={() => setShowDemo(!showDemo)}
           >
-            {language === 'fr' ? '🔑 Comptes de démo' : '🔑 Kaonty demo'}
+            {language === 'fr' ? 'Comptes de démo' : 'Kaonty demo'}
           </button>
           
           {showDemo && (
