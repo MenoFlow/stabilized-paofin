@@ -140,6 +140,7 @@ src/styles/demo/DemoPage.css
   margin-bottom: 10px;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
   flex-shrink: 0;
+  order: 1;
 }
 
 .demo-gauge-container {
@@ -211,6 +212,7 @@ src/styles/demo/DemoPage.css
   margin-bottom: 10px;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
   flex-shrink: 0;
+  order: 5;
 }
 
 .demo-marketplace-section h2 {
@@ -227,6 +229,7 @@ src/styles/demo/DemoPage.css
   margin-bottom: 0;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
   flex-shrink: 0;
+  order: 3;
 }
 
 .demo-credit-parameters h2 {
@@ -243,6 +246,7 @@ src/styles/demo/DemoPage.css
   margin-bottom: 10px;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
   flex-shrink: 0;
+  order: 4;
 }
 
 /* Wrapper pour simulation et produits côte à côte */
@@ -388,6 +392,7 @@ src/styles/demo/DemoPage.css
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
   flex-shrink: 0;
   overflow: hidden;
+  order: 2;
 }
 
 .demo-product-selection h2 {
@@ -697,24 +702,42 @@ src/styles/demo/DemoPage.css
   .demo-container {
     max-height: 100vh;
     overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  /* Ordre d'affichage mobile: 1-Score, 2-Produits, 3-Paramètres, 4-Simulation, 5-Partenaires */
+  .demo-score-section {
+    order: 1;
+  }
+  
+  .demo-product-selection {
+    order: 2;
+    margin-top: 0;
   }
   
   .demo-simulation-product-wrapper {
-    display: block;
+    display: flex;
+    flex-direction: column;
+    order: 3;
   }
   
   .demo-left-column {
     display: flex;
     flex-direction: column;
-    gap: 10px;
-  }
-  
-  .demo-product-selection {
-    margin-top: 10px;
   }
   
   .demo-credit-parameters {
+    order: 1;
     margin-bottom: 10px;
+  }
+  
+  .demo-simulation-section {
+    order: 2;
+  }
+  
+  .demo-marketplace-section {
+    order: 4;
   }
 }
 
@@ -731,30 +754,51 @@ src/styles/demo/DemoPage.css
     padding-right: 0 !important;
   }
   
+  /* Version PC: Score augmenté, Produits à gauche, Paramètres et Simulation à droite */
+  .demo-score-section {
+    padding: 20px 15px;
+  }
+  
+  .demo-gauge-container {
+    margin-bottom: 15px;
+  }
+  
+  .demo-health-bar-container {
+    max-width: 350px;
+  }
+  
+  .demo-health-score {
+    font-size: 32px;
+  }
+  
   .demo-simulation-product-wrapper {
     display: grid;
-    grid-template-columns: 1.2fr 0.8fr;
+    grid-template-columns: 0.8fr 1.2fr;
     gap: 15px;
     margin-bottom: 10px;
+  }
+  
+  .demo-product-selection {
+    margin-bottom: 0;
+    height: fit-content;
+    order: 1;
   }
   
   .demo-left-column {
     display: flex;
     flex-direction: column;
     gap: 10px;
-  }
-  
-  .demo-simulation-section {
-    margin-bottom: 0;
+    order: 2;
   }
   
   .demo-credit-parameters {
     margin-bottom: 0;
+    order: 1;
   }
   
-  .demo-product-selection {
+  .demo-simulation-section {
     margin-bottom: 0;
-    height: fit-content;
+    order: 2;
   }
   
   .demo-products {

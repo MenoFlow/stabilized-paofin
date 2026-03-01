@@ -3,6 +3,7 @@ import React from 'react';
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import { AuthProvider } from './context/AuthContext';
 import { LanguageProvider } from './context/LanguageContext'; // Ajout
+import HomePage from './pages/HomePage';
 import LoginPortal from './components/auth/LoginPortal';
 import DGDashboardPage from './pages/DGDashboardPage';
 import OperationsPage from './pages/OperationsPage';
@@ -28,7 +29,8 @@ function App() {
       <LanguageProvider> {/* Wrapper avec LanguageProvider */}
         <Router>
           <Routes>
-            <Route path="/" element={<LoginPortal />} />
+            <Route path="/" element={<HomePage />} />
+            <Route path="/login" element={<LoginPortal />} />
             
             <Route 
               path="/dashboard-dg" 
