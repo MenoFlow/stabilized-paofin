@@ -24,6 +24,23 @@ src/styles/demo/DemoPage.css
   flex-direction: column;
 }
 
+.demo-container::after {
+  content: '';
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 70%;
+  height: 70%;
+  background-image: url('../../assets/logo-paositra.png');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  opacity: 0.1;
+  z-index: 0;
+  pointer-events: none;
+}
+
 .demo-container > *:not(.demo-container::before) {
   padding-left: 10px;
   padding-right: 10px;

@@ -16,6 +16,23 @@
     overflow: hidden;
 }
 
+.login-page::before {
+    content: '';
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 80%;
+    height: 80%;
+    background-image: url('../../assets/logo-paositra.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+    opacity: 0.06;
+    z-index: 0;
+    pointer-events: none;
+}
+
 .login-page .login-container {
     max-width: 1200px;
     width: 100%;

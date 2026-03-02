@@ -54,7 +54,7 @@ function CreditsAttentionTable({ credits }) {
   return (
     <div className="card full-width">
       <h3>▲ {language === 'fr' ? 'Crédits Nécessitant une Attention' : 'Trosa Mitaky Fiheverana'}</h3>
-      <div style={{ overflowX: 'auto' }}>
+      <div style={{ overflowX: 'auto', marginTop: '1rem' }}>
         <table className="loans-table">
           <thead>
             <tr>
@@ -71,10 +71,10 @@ function CreditsAttentionTable({ credits }) {
             {credits.map((credit) => (
               <tr key={credit.id}>
                 <td>
-                  <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
                     <div style={{ 
-                      width: '40px', 
-                      height: '40px', 
+                      width: '45px', 
+                      height: '45px', 
                       borderRadius: '50%', 
                       background: 'linear-gradient(135deg, #003399, #0055cc)',
                       display: 'flex',
@@ -82,26 +82,35 @@ function CreditsAttentionTable({ credits }) {
                       justifyContent: 'center',
                       color: 'white',
                       fontWeight: 'bold',
-                      fontSize: '1.1rem'
+                      fontSize: '1.2rem',
+                      flexShrink: 0
                     }}>
                       {credit.client.charAt(0)}
                     </div>
-                    <div>
-                      <strong style={{ display: 'block', color: '#003399' }}>{credit.client}</strong>
-                      <small style={{ color: '#666' }}>Crédit #{credit.creditRef}</small>
+                    <div style={{ minWidth: 0 }}>
+                      <strong style={{ display: 'block', color: '#003399', fontSize: '0.95rem', marginBottom: '0.25rem' }}>
+                        {credit.client}
+                      </strong>
+                      <small style={{ color: '#666', fontSize: '0.85rem' }}>Crédit #{credit.creditRef}</small>
                     </div>
                   </div>
                 </td>
-                <td><strong style={{ color: '#003399' }}>{credit.montant}</strong></td>
-                <td><strong style={{ color: '#ff4757' }}>{credit.resteDu}</strong></td>
                 <td>
-                  <div>
-                    <strong style={{ display: 'block' }}>{credit.prochaineEcheance.date}</strong>
-                    <small style={{ color: '#666' }}>{credit.prochaineEcheance.montant}</small>
+                  <strong style={{ color: '#003399', fontSize: '1rem' }}>{credit.montant}</strong>
+                </td>
+                <td>
+                  <strong style={{ color: '#ff4757', fontSize: '1rem' }}>{credit.resteDu}</strong>
+                </td>
+                <td>
+                  <div style={{ lineHeight: '1.6' }}>
+                    <strong style={{ display: 'block', fontSize: '0.95rem', marginBottom: '0.25rem' }}>
+                      {credit.prochaineEcheance.date}
+                    </strong>
+                    <small style={{ color: '#666', fontSize: '0.85rem' }}>{credit.prochaineEcheance.montant}</small>
                   </div>
                 </td>
                 <td>
-                  <span className={getStatusClass(credit.statut)} style={{ display: 'inline-flex', alignItems: 'center', gap: '0.3rem' }}>
+                  <span className={getStatusClass(credit.statut)} style={{ display: 'inline-flex', alignItems: 'center', gap: '0.4rem' }}>
                     {getStatusIcon(credit.statut)}
                     {getStatusText(credit.statut)}
                   </span>
@@ -109,12 +118,12 @@ function CreditsAttentionTable({ credits }) {
                 <td style={{ 
                   color: credit.joursRetard > 5 ? '#ff4757' : credit.joursRetard ? '#ffa502' : '#2ed573', 
                   fontWeight: 'bold',
-                  fontSize: '1.1rem'
+                  fontSize: '1.15rem'
                 }}>
                   {credit.joursRetard ? `${credit.joursRetard} ${language === 'fr' ? 'jours' : 'andro'}` : '—'}
                 </td>
                 <td>
-                  <div style={{ display: 'flex', gap: '0.3rem', justifyContent: 'center', flexWrap: 'wrap' }}>
+                  <div style={{ display: 'flex', gap: '0.5rem', justifyContent: 'center', flexWrap: 'wrap' }}>
                     {credit.actions.map((action, index) => {
                       const btn = getActionButton(action, credit.statut);
                       return (

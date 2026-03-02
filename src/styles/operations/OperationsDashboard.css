@@ -8,6 +8,29 @@
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             background: #f5f7fa;
             color: #333;
+            position: relative;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 70%;
+            height: 70%;
+            background-image: url('../../assets/logo-paositra.png');
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: contain;
+            opacity: 0.08;
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        .container {
+            position: relative;
+            z-index: 1;
         }
 
         .header {
@@ -70,7 +93,7 @@
         }
 
         .container {
-            max-width: 1400px;
+            max-width: 1600px;
             margin: 0 auto;
             padding: 2rem;
         }
@@ -157,10 +180,11 @@
         }
 
         .loans-table th {
-            padding: 1rem;
+            padding: 1.2rem 1.5rem;
             text-align: left;
             font-weight: 600;
             color: white;
+            font-size: 0.95rem;
             border-bottom: 2px solid #002266;
             border-right: 1px solid rgba(255, 255, 255, 0.2);
             vertical-align: middle;
@@ -168,6 +192,7 @@
             position: sticky;
             top: 0;
             z-index: 10;
+            white-space: nowrap;
         }
 
         .loans-table th:last-child {
@@ -185,17 +210,18 @@
 
         .loans-table tbody tr:hover {
             background: #e3f2fd;
-            transform: scale(1.01);
+            transform: scale(1.005);
             box-shadow: 0 4px 12px rgba(0, 51, 153, 0.15);
         }
 
         .loans-table td {
-            padding: 1rem;
+            padding: 1.2rem 1.5rem;
             text-align: left;
             border-bottom: 1px solid #e0e0e0;
             border-right: 1px solid #e0e0e0;
             vertical-align: middle;
             word-wrap: break-word;
+            font-size: 0.9rem;
         }
 
         .loans-table td:last-child {
@@ -208,42 +234,47 @@
 
         .loans-table th:nth-child(1),
         .loans-table td:nth-child(1) {
-            width: 15%;
-            padding-left: 1.5rem;
+            width: 18%;
+            min-width: 180px;
         }
 
         .loans-table th:nth-child(2),
         .loans-table td:nth-child(2) {
             width: 12%;
+            min-width: 120px;
         }
 
         .loans-table th:nth-child(3),
         .loans-table td:nth-child(3) {
             width: 12%;
+            min-width: 120px;
         }
 
         .loans-table th:nth-child(4),
         .loans-table td:nth-child(4) {
-            width: 13%;
+            width: 14%;
+            min-width: 140px;
         }
 
         .loans-table th:nth-child(5),
         .loans-table td:nth-child(5) {
-            width: 10%;
+            width: 12%;
+            min-width: 120px;
             text-align: center;
         }
 
         .loans-table th:nth-child(6),
         .loans-table td:nth-child(6) {
             width: 10%;
+            min-width: 100px;
             text-align: center;
         }
 
         .loans-table th:nth-child(7),
         .loans-table td:nth-child(7) {
-            width: 28%;
+            width: 22%;
+            min-width: 220px;
             text-align: center;
-            padding-right: 1.5rem;
         }
 
         .status-active {
@@ -293,19 +324,21 @@
             background: #003399;
             color: white;
             border: none;
-            padding: 0.5rem 0.8rem;
+            padding: 0.6rem 1rem;
             border-radius: 6px;
             cursor: pointer;
-            font-size: 0.85rem;
-            margin: 0.2rem;
+            font-size: 0.875rem;
+            margin: 0.25rem;
             white-space: nowrap;
             transition: all 0.3s ease;
+            font-weight: 500;
+            min-width: 90px;
         }
 
         .btn:hover {
             background: #002266;
             transform: translateY(-2px);
-            box-shadow: 0 2px 8px rgba(0, 51, 153, 0.3);
+            box-shadow: 0 4px 12px rgba(0, 51, 153, 0.3);
         }
 
         .btn-danger {
@@ -314,6 +347,7 @@
 
         .btn-danger:hover {
             background: #ee2f3f;
+            box-shadow: 0 4px 12px rgba(255, 71, 87, 0.3);
         }
 
         .btn-warning {
@@ -322,6 +356,7 @@
 
         .btn-warning:hover {
             background: #ff8c00;
+            box-shadow: 0 4px 12px rgba(255, 165, 2, 0.3);
         }
 
         .alerts-list {
@@ -364,8 +399,14 @@
             color: #666;
         }
 
-        .full-width {
+        .card.full-width {
             grid-column: 1 / -1;
+            padding: 2rem;
+        }
+
+        .card.full-width h3 {
+            margin-bottom: 1.5rem;
+            font-size: 1.3rem;
         }
 
         .progress-bar {
