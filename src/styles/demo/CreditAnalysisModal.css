@@ -1,0 +1,233 @@
+/* CreditAnalysisModal.css */
+.credit-analysis-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 2000;
+  padding: 20px;
+}
+
+.credit-analysis-modal {
+  background: white;
+  border-radius: 16px;
+  max-width: 500px;
+  width: 100%;
+  max-height: 90vh;
+  overflow-y: auto;
+  position: relative;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+  animation: slideUp 0.3s ease;
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.modal-close-btn {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  background: none;
+  border: none;
+  font-size: 32px;
+  color: #666;
+  cursor: pointer;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  transition: all 0.3s ease;
+}
+
+.modal-close-btn:hover {
+  background: #f0f0f0;
+  color: #333;
+}
+
+.modal-title {
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: #003399;
+  padding: 25px 25px 15px;
+  margin: 0;
+  border-bottom: 2px solid #f0f0f0;
+}
+
+.modal-content {
+  padding: 25px;
+}
+
+.info-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 0;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.info-label {
+  font-size: 0.95rem;
+  color: #666;
+  font-weight: 500;
+}
+
+.info-value {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #333;
+}
+
+.info-value.highlight {
+  color: #FFC107;
+  font-size: 1.2rem;
+}
+
+.payment-info {
+  background: #f8f9fa;
+  padding: 15px;
+  border-radius: 8px;
+  margin: 20px 0;
+  border-left: 4px solid #003399;
+}
+
+.payment-title {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #003399;
+  margin: 0 0 5px;
+}
+
+.payment-subtitle {
+  font-size: 0.85rem;
+  color: #666;
+  margin: 0;
+}
+
+.capacity-section {
+  margin: 25px 0;
+}
+
+.capacity-label {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+.capacity-bar {
+  width: 100%;
+  height: 30px;
+  background: #e0e0e0;
+  border-radius: 15px;
+  overflow: hidden;
+  position: relative;
+}
+
+.capacity-fill {
+  height: 100%;
+  transition: width 0.5s ease;
+  border-radius: 15px;
+}
+
+.capacity-value {
+  text-align: center;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #333;
+  margin-top: 10px;
+}
+
+.status-message {
+  display: flex;
+  gap: 15px;
+  padding: 20px;
+  border-radius: 12px;
+  border: 2px solid;
+  background: rgba(255, 255, 255, 0.5);
+  margin-top: 20px;
+}
+
+.status-icon {
+  font-size: 2rem;
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
+.status-content h3 {
+  font-size: 1.1rem;
+  font-weight: 700;
+  margin: 0 0 8px;
+}
+
+.status-content p {
+  font-size: 0.95rem;
+  color: #666;
+  margin: 0;
+  line-height: 1.5;
+}
+
+.modal-action-btn {
+  width: calc(100% - 50px);
+  margin: 0 25px 25px;
+  padding: 15px;
+  background: #003399;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.modal-action-btn:hover {
+  background: #002266;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 51, 153, 0.3);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .credit-analysis-modal {
+    max-width: 100%;
+    margin: 10px;
+  }
+
+  .modal-title {
+    font-size: 1.1rem;
+    padding: 20px 20px 12px;
+  }
+
+  .modal-content {
+    padding: 20px;
+  }
+
+  .info-row {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 5px;
+  }
+
+  .info-value {
+    font-size: 1rem;
+  }
+
+  .info-value.highlight {
+    font-size: 1.1rem;
+  }
+}

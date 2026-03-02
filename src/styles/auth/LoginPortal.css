@@ -16,31 +16,17 @@
     overflow: hidden;
 }
 
-/* Barre supérieure bleue avec logo */
-.login-page::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 60px;
-    background: linear-gradient(135deg, #0052A5 0%, #003d7a 100%);
-    z-index: 0;
-}
-
 .login-page .login-container {
     max-width: 1200px;
     width: 100%;
     margin: 0 auto;
-    padding: 0.5rem 2rem 1rem;
+    padding: 0 2rem 2rem;
     position: relative;
     z-index: 1;
     flex: 1;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
-    max-height: 100vh;
-    overflow-y: auto;
+    min-height: 100vh;
 }
 
 html, body {
@@ -53,8 +39,15 @@ html, body {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    margin-bottom: 1rem;
-    padding: 0.3rem 0;
+    padding: 1rem 2rem;
+    margin-bottom: 2rem;
+    background: white;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    margin-left: -2rem;
+    margin-right: -2rem;
 }
 
 .logo {
@@ -69,13 +62,9 @@ html, body {
 
 /* Style pour le logo dans le header du portail de connexion */
 .header-logo {
-    height: 50px;
+    height: 60px;
     width: auto;
     object-fit: contain;
-    padding: 5px;
-    background: white;
-    border-radius: 8px;
-    box-shadow: 0 2px 8px rgba(0, 82, 165, 0.15);
 }
 
 /* Styles pour les icônes inline lucide-react */
@@ -93,7 +82,7 @@ html, body {
 .title {
     font-size: 1.2rem;
     font-weight: 700;
-    color: #ffffff;
+    color: #0052A5;
     margin-bottom: 0.1rem;
     letter-spacing: 0.3px;
 }
@@ -104,15 +93,27 @@ html, body {
     font-weight: 400;
 }
 
-/* Section principale avec deux colonnes */
+/* Section principale avec carte unifiée */
 .login-content {
-    display: grid;
-    grid-template-columns: auto 1fr;
-    gap: 2rem;
+    display: flex;
+    justify-content: center;
     align-items: center;
-    max-width: 900px;
+    max-width: 1000px;
     margin: 0 auto;
     width: 100%;
+    padding: 2rem 0;
+}
+
+.login-unified-card {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 3rem;
+    width: 100%;
+    background: white;
+    padding: 3rem;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    align-items: center;
 }
 
 /* Colonne gauche - Logo en grand */
@@ -121,30 +122,32 @@ html, body {
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    padding: 2rem;
+    border-right: 1px solid #e0e0e0;
 }
 
 .logo-large {
-    width: 160px;
+    width: 200px;
     height: auto;
     object-fit: contain;
 }
 
 .welcome-title {
-    font-size: 2rem;
+    font-size: 2.5rem;
     font-weight: 700;
     color: #FFC107;
     line-height: 1.2;
-    margin-top: 1rem;
+    margin-top: 1.5rem;
     text-align: center;
 }
 
 .welcome-subtitle {
-    font-size: 1.1rem;
+    font-size: 1.3rem;
     font-weight: 600;
     color: #0052A5;
     line-height: 1.3;
     text-align: center;
-    margin-top: 0.3rem;
+    margin-top: 0.5rem;
 }
 
 .welcome-text {
@@ -312,6 +315,25 @@ html, body {
     text-decoration: underline;
 }
 
+.signup-link {
+    text-align: center;
+    font-size: 0.9rem;
+    margin-top: 1rem;
+    padding-top: 1rem;
+    border-top: 1px solid #e0e0e0;
+    color: #666;
+}
+
+.signup-link a {
+    color: #0052A5;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.signup-link a:hover {
+    text-decoration: underline;
+}
+
 /* Section inscription client */
 .client-signup {
     background: #f8f9fa;
@@ -374,35 +396,44 @@ html, body {
 .language-toggle {
     display: flex;
     gap: 0.5rem;
+    background: #f0f0f0;
+    padding: 0.25rem;
+    border-radius: 25px;
 }
 
 .lang-btn {
-    background: white;
-    color: #0052A5;
-    border: 2px solid #0052A5;
-    padding: 0.4rem 1rem;
-    border-radius: 6px;
+    background: transparent;
+    color: #666;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
     cursor: pointer;
     font-weight: 600;
     transition: all 0.3s ease;
     font-size: 0.9rem;
 }
 
-.lang-btn.active,
-.lang-btn:hover {
+.lang-btn.active {
     background: #0052A5;
     color: white;
 }
 
+.lang-btn:hover:not(.active) {
+    background: #e0e0e0;
+}
+
 /* Responsive Design */
 @media (max-width: 968px) {
-    .login-content {
+    .login-unified-card {
         grid-template-columns: 1fr;
         gap: 2rem;
+        padding: 2rem;
     }
 
     .welcome-section {
-        display: none;
+        border-right: none;
+        border-bottom: 1px solid #e0e0e0;
+        padding-bottom: 2rem;
     }
 
     .login-single {

@@ -98,6 +98,12 @@ src/styles/demo/DemoPage.css
   gap: 10px;
 }
 
+.demo-logo-paositra {
+  height: 45px;
+  width: auto;
+  object-fit: contain;
+}
+
 .demo-logo-img {
   height: 32px;
   width: auto;
@@ -140,7 +146,6 @@ src/styles/demo/DemoPage.css
   margin-bottom: 10px;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
   flex-shrink: 0;
-  order: 1;
 }
 
 .demo-gauge-container {
@@ -212,7 +217,6 @@ src/styles/demo/DemoPage.css
   margin-bottom: 10px;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
   flex-shrink: 0;
-  order: 5;
 }
 
 .demo-marketplace-section h2 {
@@ -229,7 +233,6 @@ src/styles/demo/DemoPage.css
   margin-bottom: 0;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
   flex-shrink: 0;
-  order: 3;
 }
 
 .demo-credit-parameters h2 {
@@ -246,7 +249,6 @@ src/styles/demo/DemoPage.css
   margin-bottom: 10px;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
   flex-shrink: 0;
-  order: 4;
 }
 
 /* Wrapper pour simulation et produits côte à côte */
@@ -392,7 +394,6 @@ src/styles/demo/DemoPage.css
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
   flex-shrink: 0;
   overflow: hidden;
-  order: 2;
 }
 
 .demo-product-selection h2 {
@@ -706,37 +707,42 @@ src/styles/demo/DemoPage.css
     flex-direction: column;
   }
   
-  /* Ordre d'affichage mobile: 1-Score, 2-Produits, 3-Paramètres, 4-Simulation, 5-Partenaires */
+  /* Ordre d'affichage mobile: 1-Score, 2-Produits, 3-Paramètres, 4-Simulation, 5-Partenaires, 6-Infos - Updated */
   .demo-score-section {
     order: 1;
-  }
-  
-  .demo-product-selection {
-    order: 2;
-    margin-top: 0;
   }
   
   .demo-simulation-product-wrapper {
     display: flex;
     flex-direction: column;
-    order: 3;
+    order: 2;
+  }
+  
+  .demo-product-selection {
+    order: 1;
+    margin-top: 0;
   }
   
   .demo-left-column {
     display: flex;
     flex-direction: column;
-  }
-  
-  .demo-credit-parameters {
-    order: 1;
-    margin-bottom: 10px;
-  }
-  
-  .demo-simulation-section {
     order: 2;
   }
   
+  .demo-simulation-section {
+    order: 2 !important;
+  }
+  
+  .demo-credit-parameters {
+    order: 1 !important;
+    margin-bottom: 10px;
+  }
+  
   .demo-marketplace-section {
+    order: 3;
+  }
+  
+  .demo-legal-info {
     order: 4;
   }
 }
@@ -791,14 +797,14 @@ src/styles/demo/DemoPage.css
     order: 2;
   }
   
-  .demo-credit-parameters {
-    margin-bottom: 0;
-    order: 1;
-  }
-  
   .demo-simulation-section {
     margin-bottom: 0;
-    order: 2;
+    order: 2 !important;
+  }
+  
+  .demo-credit-parameters {
+    margin-bottom: 0;
+    order: 1 !important;
   }
   
   .demo-products {

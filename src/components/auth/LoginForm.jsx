@@ -112,6 +112,13 @@ function LoginForm() {
           </a>
         </div>
 
+        <div className="signup-link">
+          {language === 'fr' ? "Pas encore de compte ?" : "Tsy manana kaonty ?"}{' '}
+          <a href="/signup">
+            {language === 'fr' ? "Créer un compte" : "Mamorona kaonty"}
+          </a>
+        </div>
+
         <div className="demo-section">
           <button 
             type="button"

@@ -26,7 +26,7 @@ function CreditParameters({
 
   return (
 
-    <div className="demo-marketplace-section">
+    <div className="demo-credit-parameters">
       <h2>{t.creditParameters.title[language]}</h2>
 
       <div className="demo-slider-section">

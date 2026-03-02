@@ -2,7 +2,8 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useLanguage } from '../../context/LanguageContext';
-import LucideIcon from '../../components/common/LucideIcon'; // Import du composant LucideIcon
+import LucideIcon from '../../components/common/LucideIcon';
+import logoPaositra from '../../assets/logo-paositra.png';
 import '../../styles/demo/DemoPage.css';
 
 function DemoHeader({ user }) {
@@ -18,15 +19,10 @@ function DemoHeader({ user }) {
       <div className="demo-header-left">
         <div className="demo-logo-section">
           <img 
-            src="./mobile/assets/images/Logo_paofin.png.png" 
-            alt="PAOFIN" 
-            className="demo-logo-img"
-            onError={(e) => {
-              e.target.style.display = 'none';
-              e.target.nextElementSibling.style.display = 'flex';
-            }}
+            src={logoPaositra} 
+            alt="PAOSITRA" 
+            className="demo-logo-paositra"
           />
-          <div className="demo-logo" style={{ display: 'none' }}>P</div>
         </div>
       </div>
       <div className="demo-header-right">

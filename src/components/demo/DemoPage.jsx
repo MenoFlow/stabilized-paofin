@@ -9,6 +9,9 @@ import SimulationSection from './SimulationSection';
 import ProductCarousel from './ProductCarousel';
 import MarketplacePartners from './MarketplacePartners';
 import QualificationPopup from './QualificationPopup';
+import CreditAnalysisModal from './CreditAnalysisModal';
+import CreditRequestConfirmation from './CreditRequestConfirmation';
+import ContactFormPopup from './ContactFormPopup';
 import LegalInfo from './LegalInfo';
 import BottomNavigation from './BottomNavigation';
 import { useDemo } from '../../hooks/useDemo';
@@ -32,6 +35,9 @@ function DemoPage() {
     amountDisplay,
     durationDisplay,
     showPopup,
+    showAnalysisModal,
+    showConfirmation,
+    showContactForm,
     otherLoans,
     guarantee,
     maxAmount,
@@ -40,18 +46,23 @@ function DemoPage() {
     setExpenses,
     setOtherLoans,
     setGuarantee,
+    setShowAnalysisModal,
     handleProductSelect,
     handleQuickAmount,
     handleCalculate,
     handleTestPopup,
     handlePopupSubmit,
     closeQualificationPopup,
+    handleConfirmRequest,
+    handleCancelRequest,
+    handleContactSubmit,
     formatAmount,
     formatDuration,
     getHealthColor,
     getArrowPosition,
     onAmountChange,
-    onDurationChange
+    onDurationChange,
+    capacity
   } = useDemo();
 
   return (
@@ -111,6 +122,35 @@ function DemoPage() {
         onGuaranteeChange={setGuarantee}
         onClose={closeQualificationPopup}
         onSubmit={handlePopupSubmit}
+      />
+
+      <CreditAnalysisModal
+        show={showAnalysisModal}
+        onClose={() => setShowAnalysisModal(false)}
+        selectedProduct={selectedProduct}
+        amountDisplay={amountDisplay}
+        durationDisplay={durationDisplay}
+        monthlyPayment={monthlyPayment}
+        rav={rav}
+        debtRatio={debtRatio}
+        capacity={capacity}
+        formatAmount={formatAmount}
+      />
+
+      <CreditRequestConfirmation
+        show={showConfirmation}
+        onConfirm={handleConfirmRequest}
+        onCancel={handleCancelRequest}
+      />
+
+      <ContactFormPopup
+        show={showContactForm}
+        onClose={() => {
+          setShowContactForm(false);
+          setOtherLoans(0);
+          setGuarantee('salary');
+        }}
+        onSubmit={handleContactSubmit}
       />
 
       <LegalInfo />

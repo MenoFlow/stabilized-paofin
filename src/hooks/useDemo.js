@@ -26,6 +26,9 @@ export function useDemo() {
   
   // États pour le popup
   const [showPopup, setShowPopup] = useState(false);
+  const [showAnalysisModal, setShowAnalysisModal] = useState(false);
+  const [showConfirmation, setShowConfirmation] = useState(false);
+  const [showContactForm, setShowContactForm] = useState(false);
   const [otherLoans, setOtherLoans] = useState(0);
   const [guarantee, setGuarantee] = useState('salary');
   
@@ -63,15 +66,15 @@ export function useDemo() {
     // Mensualité estimée: M = Montant / Durée
     const monthly = amount / duration;
 
-    // RAV = Revenus - Charges - Mensualité
-    const remaining = income - expenses - monthly;
+    // RAV = Revenus - Charges - Mensualité - Autres emprunts
+    const remaining = income - expenses - monthly - otherLoans;
 
-    // Taux d'endettement: T = (Charges + M) / Revenus * 100
+    // Taux d'endettement: T = (Charges + M + Autres emprunts) / Revenus * 100
     let debt = 0;
     let cap = 0;
 
     if (income > 0) {
-      debt = ((expenses + monthly) / income) * 100;
+      debt = ((expenses + monthly + otherLoans) / income) * 100;
       cap = Math.max(0, 100 - debt);
 
       // Zone Rouge: Forcer à 0% si T > 45% OU RAV < 500k
@@ -167,90 +170,71 @@ export function useDemo() {
     setShowPopup(false);
   };
 
-  // Fonction pour soumettre la qualification
+  // Fonction pour soumettre la qualification (étape 1)
   const handlePopupSubmit = () => {
-    let message = language === 'mg'
-      ? 'Misaotra anao ! Nalefa ny fangatahanao.\n\n'
-      : 'Merci ! Votre demande a été transmise.\n\n';
-
-    message += language === 'mg'
-      ? `Famerenam-bola hafa: ${formatAmount(otherLoans)}\n`
-      : `Autres emprunts: ${formatAmount(otherLoans)}\n`;
-
-    const guaranteeText = language === 'mg'
-      ? (guarantee === 'salary' ? 'Karama' : guarantee === 'material' ? 'Antoka materialy' : 'Antoka Tany/Trano')
-      : (guarantee === 'salary' ? 'Salaire' : guarantee === 'material' ? 'Garantie matérielle' : 'Garantie Terrain/Maison');
-
-    message += language === 'mg'
-      ? `Antoka: ${guaranteeText}\n\n`
-      : `Garantie: ${guaranteeText}\n\n`;
-
-    message += language === 'mg'
-      ? 'Hifandray aminao izahay ao anatin\'ny 24 ora.'
-      : 'Nous vous contacterons dans les 24 heures.';
-
-    alert(message);
+    // Fermer le questionnaire et afficher la confirmation
     closeQualificationPopup();
-    setOtherLoans(0);
-    setGuarantee('salary');
+    setShowConfirmation(true);
   };
 
   // Fonction pour calculer le crédit (EXACTEMENT comme calculateCredit dans le script)
   const handleCalculate = () => {
-    const result = calculateCapacity();
-
-    if (result.debt <= 45) {
-      showQualificationPopup();
-    } else {
-      let message = language === 'mg'
-        ? `Fanadihadiana ny fangatahanao crédit ${selectedProduct.toUpperCase()}:\n\n`
-        : `Analyse de votre demande de crédit ${selectedProduct.toUpperCase()}:\n\n`;
-
-      message += language === 'mg'
-        ? `Vola: ${amountDisplay}\n`
-        : `Montant: ${amountDisplay}\n`;
-
-      message += language === 'mg'
-        ? `Fotoana: ${durationDisplay}\n`
-        : `Durée: ${durationDisplay}\n`;
-
-      message += language === 'mg'
-        ? `Vola averina isam-bolana: ${formatAmount(result.monthly)}\n`
-        : `Mensualité estimée: ${formatAmount(result.monthly)}\n`;
-
-      message += language === 'mg'
-        ? `\n$ Fandoavam-bola azo antoka amin'ny PAOSITRA MONEY\n● paositramoney.mg - API misy\n`
-        : `\n$ Paiement sécurisé via PAOSITRA MONEY\n● paositramoney.mg - API disponible\n`;
-
-      message += language === 'mg'
-        ? `RAV: ${formatAmount(result.remaining)}\n`
-        : `RAV (Reste à Vivre): ${formatAmount(result.remaining)}\n`;
-
-      message += language === 'mg'
-        ? `Tahan'ny trosa: ${result.debt.toFixed(1)}%\n\n`
-        : `Taux d'endettement: ${result.debt.toFixed(1)}%\n\n`;
-
-      if (result.debt <= 33) {
-        message += language === 'mg'
-          ? "▶ Tsara be ny mombamomba anao ! Azo ekena ny fangatahanao."
-          : "▶ Excellent profil ! Votre demande a de fortes chances d'être approuvée.";
-      } else if (result.debt <= 45) {
-        message += language === 'mg'
-          ? "▲ Azo ekena. Mila dinihina kokoa ny antontan-taratasy."
-          : "▲ Profil acceptable. Conditions à négocier selon votre dossier.";
-      } else {
-        message += language === 'mg'
-          ? "■ Mety hisy loza. Tsara raha ahena ny vola angatahinao."
-          : "■ Profil à risque. Nous vous conseillons de réduire le montant.";
-      }
-
-      alert(message);
-    }
+    // Toujours afficher le modal d'analyse, jamais le questionnaire
+    setShowAnalysisModal(true);
   };
 
-  // Fonction pour tester le popup directement
+  // Fonction pour tester le popup directement (étape 1: questionnaire)
   const handleTestPopup = () => {
-    showQualificationPopup();
+    // Afficher d'abord le questionnaire
+    setShowPopup(true);
+  };
+
+  // Gérer la confirmation (étape 2)
+  const handleConfirmRequest = () => {
+    setShowConfirmation(false);
+    setShowContactForm(true);
+  };
+
+  const handleCancelRequest = () => {
+    setShowConfirmation(false);
+    // Réinitialiser les données du questionnaire
+    setOtherLoans(0);
+    setGuarantee('salary');
+  };
+
+  // Gérer la soumission du formulaire de contact (étape 3)
+  const handleContactSubmit = ({ phone, availableTime }) => {
+    setShowContactForm(false);
+    
+    // Simuler l'enregistrement des données
+    const requestData = {
+      product: selectedProduct,
+      amount: formatAmount(amount),
+      duration: formatDuration(duration),
+      income: formatAmount(income),
+      expenses: formatAmount(expenses),
+      otherLoans: formatAmount(otherLoans),
+      guarantee: guarantee,
+      phone: phone,
+      availableTime: availableTime,
+      timestamp: new Date().toISOString()
+    };
+    
+    console.log('Demande de crédit enregistrée:', requestData);
+    
+    const guaranteeText = language === 'mg'
+      ? (guarantee === 'salary' ? 'Karama' : guarantee === 'material' ? 'Antoka materialy' : 'Antoka Tany/Trano')
+      : (guarantee === 'salary' ? 'Salaire' : guarantee === 'material' ? 'Garantie matérielle' : 'Garantie Terrain/Maison');
+    
+    const message = language === 'fr'
+      ? `✅ Demande enregistrée avec succès !\n\nProduit: ${selectedProduct.toUpperCase()}\nMontant: ${formatAmount(amount)}\nDurée: ${formatDuration(duration)}\nAutres emprunts: ${formatAmount(otherLoans)}\nGarantie: ${guaranteeText}\nNuméro: ${phone}\nHoraire: ${availableTime}\n\nNous vous contacterons dans les 24 heures.`
+      : `✅ Vokatry ny fangatahana!\n\nVokatra: ${selectedProduct.toUpperCase()}\nVola: ${formatAmount(amount)}\nFaharetan: ${formatDuration(duration)}\nTrosa hafa: ${formatAmount(otherLoans)}\nAntoka: ${guaranteeText}\nNuméro: ${phone}\nFotoana: ${availableTime}\n\nHifandray aminao izahay ao anatin'ny 24 ora.`;
+    
+    alert(message);
+    
+    // Réinitialiser les données
+    setOtherLoans(0);
+    setGuarantee('salary');
   };
 
   // Initialisation (équivalent à DOMContentLoaded)
@@ -263,7 +247,7 @@ export function useDemo() {
   // Recalculer quand les inputs changent
   useEffect(() => {
     updateHealthScore();
-  }, [amount, duration, income, expenses]);
+  }, [amount, duration, income, expenses, otherLoans]);
 
   // Mettre à jour l'affichage formaté quand la langue change
   useEffect(() => {
@@ -287,6 +271,9 @@ export function useDemo() {
     amountDisplay,
     durationDisplay,
     showPopup,
+    showAnalysisModal,
+    showConfirmation,
+    showContactForm,
     otherLoans,
     guarantee,
     maxAmount,
@@ -298,6 +285,9 @@ export function useDemo() {
     setOtherLoans,
     setGuarantee,
     setShowPopup,
+    setShowAnalysisModal,
+    setShowConfirmation,
+    setShowContactForm,
     
     // Handlers
     handleProductSelect,
@@ -306,6 +296,9 @@ export function useDemo() {
     handleTestPopup,
     handlePopupSubmit,
     closeQualificationPopup,
+    handleConfirmRequest,
+    handleCancelRequest,
+    handleContactSubmit,
     
     // Fonctions
     formatAmount,
