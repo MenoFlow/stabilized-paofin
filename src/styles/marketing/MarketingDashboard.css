@@ -44,6 +44,31 @@
             gap: 1rem;
         }
 
+        .user-info .language-toggle {
+            position: static;
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        .user-info .lang-btn {
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            padding: 0.4rem 0.8rem;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: bold;
+            font-size: 0.8rem;
+            transition: all 0.3s ease;
+        }
+
+        .user-info .lang-btn.active,
+        .user-info .lang-btn:hover {
+            background: rgba(255, 255, 255, 0.9);
+            color: #003399;
+            border-color: rgba(255, 255, 255, 0.9);
+        }
+
         .language-toggle {
             position: absolute;
             top: 1rem;
@@ -51,6 +76,11 @@
             z-index: 1000;
             display: flex;
             gap: 0.5rem;
+        }
+
+        /* Language toggle dans le header */
+        .header .language-toggle {
+            position: static;
         }
 
         .lang-btn {
@@ -140,14 +170,19 @@
             background: #003399;
             color: white;
             border: none;
-            padding: 0.5rem 1rem;
+            padding: 0.5rem 0.8rem;
             border-radius: 6px;
             cursor: pointer;
-            font-size: 0.9rem;
+            font-size: 0.85rem;
+            margin: 0.2rem;
+            white-space: nowrap;
+            transition: all 0.3s ease;
         }
 
         .btn:hover {
             background: #002266;
+            transform: translateY(-2px);
+            box-shadow: 0 2px 8px rgba(0, 51, 153, 0.3);
         }
 
         .full-width {
@@ -417,8 +452,16 @@
             }
 
             .user-info {
-                flex-direction: column;
+                flex-direction: row;
+                flex-wrap: wrap;
                 gap: 0.5rem;
+                justify-content: center;
+            }
+
+            .user-info .language-toggle {
+                order: -1;
+                width: 100%;
+                justify-content: center;
             }
 
             .stats-grid {

@@ -11,7 +11,7 @@ function ProfessionalSection({ formData, handleChange }) {
     <div className="form-section">
       <div className="section-title">
         <Briefcase className="section-icon" size={20} />
-        <span>{language === 'fr' ? 'Informations professionnelles' : 'Fampahalalana asa'}</span>
+        <span>{language === 'fr' ? 'Informations professionnelles' : 'Mombamomba arak\'asa'}</span>
       </div>
 
       <div className="form-row">
@@ -35,13 +35,13 @@ function ProfessionalSection({ formData, handleChange }) {
         </div>
         <div className="form-group">
           <label className="form-label">
-            {language === 'fr' ? 'Revenus mensuels (Ar)' : 'Fidiram-bola isam-bolana (Ar)'}
+            {language === 'fr' ? 'Revenus mensuels (Ar)' : 'Vola miditra isam-bolana (Ar)'}
           </label>
           <input
             type="number"
             className="form-input"
             name="monthlyIncome"
-            placeholder="Ex: 2000000"
+            placeholder={language === 'fr' ? 'Ex: 2000000' : 'Ohatra: 2000000'}
             value={formData.monthlyIncome}
             onChange={handleChange}
             required
@@ -57,7 +57,7 @@ function ProfessionalSection({ formData, handleChange }) {
           type="text"
           className="form-input"
           name="employer"
-          placeholder="Ex: Société ABC"
+          placeholder={language === 'fr' ? 'Ex: Société ABC' : 'Ohatra: Orinasa ABC'}
           value={formData.employer}
           onChange={handleChange}
           required

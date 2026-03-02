@@ -17,11 +17,11 @@ function HomePage() {
     },
     subtitle: {
       fr: 'Votre partenaire financier',
-      mg: 'Mpiara-miasa ara-bola'
+      mg: 'Mpiara-miombon\'antoka aminao ara-bola'
     },
     description: {
-      fr: 'Simulez votre crédit en quelques minutes et découvrez les solutions de financement adaptées à vos besoins à Madagascar.',
-      mg: 'Kajy ny trosa afaka alaina ao anatin\'ny minitra vitsivitsy ary mahita vahaolana ara-bola mifanaraka amin\'ny filàna eto Madagasikara.'
+      fr: 'Simulez votre crédit en quelques minutes et découvrez les solutions de financement adaptées à vos besoins.',
+      mg: 'Tombàno ao anatin\'ny minitra vitsy ny fihindramam-bola kasainao ary fantaro ireo tolotra mifanaraka amin\'ny filànao.'
     },
     welcomeTitle: {
       fr: 'Tongasoa',

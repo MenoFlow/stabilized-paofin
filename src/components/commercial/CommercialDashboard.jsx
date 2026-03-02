@@ -2,7 +2,6 @@
 import React, { useEffect } from 'react';
 import { useLanguage } from '../../context/LanguageContext';
 import Header from '../common/Header';
-import LanguageToggle from '../common/LanguageToggle';
 import QuickStats from './QuickStats';
 import HotLeadsTable from './HotLeadsTable';
 import AppointmentCalendar from './AppointmentCalendar';
@@ -19,6 +18,11 @@ import '../../styles/commercial/CommercialDashboard.css';
 
 function CommercialDashboard() {
   const { language } = useLanguage();
+
+  const dashboardTitle = {
+    fr: "Dashboard Commercial",
+    mg: "Dashboard Varotra"
+  };
 
   useEffect(() => {
     // Simulation de mise à jour temps réel
@@ -44,8 +48,6 @@ function CommercialDashboard() {
 
   return (
     <>
-      <LanguageToggle />
-      
       <Header 
         user={{
           name: userInfo.name,
@@ -53,6 +55,7 @@ function CommercialDashboard() {
           avatar: userInfo.avatar
         }}
         onLogout={handleLogout}
+        dashboardTitle={dashboardTitle}
       />
 
       <div className="container">

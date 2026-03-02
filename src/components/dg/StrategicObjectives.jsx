@@ -5,9 +5,19 @@ import { useLanguage } from '../../context/LanguageContext';
 function StrategicObjectives({ objectives, onObjectiveClick }) {
   const { language } = useLanguage();
 
+  const title = {
+    fr: "● Objectifs Stratégiques 2026",
+    mg: "● Tanjona Stratejika 2026"
+  };
+
+  const labels = {
+    objectif: { fr: "Objectif", mg: "Tanjona" },
+    actuel: { fr: "Actuel", mg: "Ankehitriny" }
+  };
+
   return (
     <div className="card">
-      <h3>● Objectifs Stratégiques 2026</h3>
+      <h3>{title[language]}</h3>
       <ul className="objectives-list">
         {objectives.map((obj, index) => (
           <li 
@@ -18,7 +28,7 @@ function StrategicObjectives({ objectives, onObjectiveClick }) {
             <div className="objective-info">
               <div className="objective-title">{obj.title[language]}</div>
               <div className="objective-progress">
-                Objectif: {obj.target} | Actuel: {obj.current}
+                {labels.objectif[language]}: {obj.target} | {labels.actuel[language]}: {obj.current}
               </div>
             </div>
             <div>

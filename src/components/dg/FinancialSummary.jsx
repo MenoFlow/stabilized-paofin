@@ -6,9 +6,14 @@ import { useLanguage } from '../../context/LanguageContext';
 function FinancialSummary({ data }) {
   const { language } = useLanguage();
 
+  const title = {
+    fr: "Résumé Financier",
+    mg: "Famintinana ara-bola"
+  };
+
   return (
     <div className="card">
-      <h3><DollarSign className="inline-icon" size={20} /> Résumé Financier</h3>
+      <h3><DollarSign className="inline-icon" size={20} /> {title[language]}</h3>
       <div className="financial-summary">
         <div className="financial-item">
           <div className="financial-amount">{data.monthly.amount}</div>

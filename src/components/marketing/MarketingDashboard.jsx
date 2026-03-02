@@ -2,7 +2,6 @@
 import React, { useState, useEffect } from 'react';
 import { useLanguage } from '../../context/LanguageContext';
 import Header from '../common/Header';
-import LanguageToggle from '../common/LanguageToggle';
 import MarketingStats from './MarketingStats';
 import ConversionFunnel from './ConversionFunnel';
 import AcquisitionChannels from './AcquisitionChannels';
@@ -22,6 +21,11 @@ import '../../styles/marketing/MarketingDashboard.css';
 
 function MarketingDashboard() {
   const { language } = useLanguage();
+  const dashboardTitle = {
+    fr: "Dashboard Marketing",
+    mg: "Dashboard Marketing"
+  };
+
   const [stats, setStats] = useState(marketingStats);
 
   useEffect(() => {
@@ -73,8 +77,6 @@ function MarketingDashboard() {
 
   return (
     <>
-      <LanguageToggle />
-      
       <Header 
         user={{
           name: userInfo.name,
@@ -82,6 +84,7 @@ function MarketingDashboard() {
           avatar: userInfo.avatar
         }}
         onLogout={handleLogout}
+        dashboardTitle={dashboardTitle}
       />
 
       <div className="container">

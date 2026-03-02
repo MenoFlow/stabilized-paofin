@@ -26,7 +26,7 @@ function SignupForm({ formData, handleChange, handleSubmit, isLoading }) {
       >
         {isLoading
           ? (language === 'mg' ? 'Mamorona...' : 'Création en cours...')
-          : (language === 'mg' ? 'Mamorona ny kaontiko' : 'Créer mon compte')
+          : (language === 'mg' ? 'Hanokatra ny kaontiko' : 'Créer mon compte')
         }
       </button>
     </form>

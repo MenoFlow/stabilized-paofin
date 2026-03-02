@@ -6,9 +6,14 @@ import { useLanguage } from '../../context/LanguageContext';
 function DepartmentPerformance({ departments }) {
   const { language } = useLanguage();
 
+  const title = {
+    fr: "Performance par Département",
+    mg: "Fahombiazana isaky ny Sampana"
+  };
+
   return (
     <div className="card full-width">
-      <h3><Building2 className="inline-icon" size={20} /> Performance par Département</h3>
+      <h3><Building2 className="inline-icon" size={20} /> {title[language]}</h3>
       <div className="departments-grid">
         {departments.map((dept, index) => (
           <div key={index} className="department-card">

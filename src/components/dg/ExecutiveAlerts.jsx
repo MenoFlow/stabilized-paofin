@@ -15,9 +15,14 @@ function ExecutiveAlerts({ alerts }) {
     }
   };
 
+  const title = {
+    fr: "■ Alertes Direction",
+    mg: "■ Fampitandrehana ho an'ny Fitantanana"
+  };
+
   return (
     <div className="card">
-      <h3>■ Alertes Direction</h3>
+      <h3>{title[language]}</h3>
       <div className="alerts-executive">
         {alerts.map((alert, index) => (
           <div key={index} className={getAlertClass(alert.type)}>

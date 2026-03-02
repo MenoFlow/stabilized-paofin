@@ -9,13 +9,13 @@ function ContactSection({ formData, handleChange }) {
     <div className="form-section">
       <div className="section-title">
         <span>●</span>
-        <span>{language === 'fr' ? 'Informations de contact' : 'Fampahalalana fifandraisana'}</span>
+        <span>{language === 'fr' ? 'Informations de contact' : 'Antsipirian\'ny fifandraisana'}</span>
       </div>
 
       <div className="form-row">
         <div className="form-group">
           <label className="form-label">
-            {language === 'fr' ? 'Téléphone' : 'Telefaona'}
+            {language === 'fr' ? 'Téléphone' : 'Laharana finday'}
           </label>
           <input
             type="tel"
@@ -29,7 +29,7 @@ function ContactSection({ formData, handleChange }) {
         </div>
         <div className="form-group">
           <label className="form-label">
-            {language === 'fr' ? 'Email' : 'Mailaka'}
+            {language === 'fr' ? 'Email' : 'Adiresy mailaka'}
           </label>
           <input
             type="email"
@@ -51,7 +51,7 @@ function ContactSection({ formData, handleChange }) {
           type="text"
           className="form-input"
           name="address"
-          placeholder="Ex: Lot II M 25 Ankadifotsy, Antananarivo"
+          placeholder={language === 'fr' ? 'Ex: Lot II M 25 Ankadifotsy, Antananarivo' : 'Ohatra: Lot II M 25 Ankadifotsy, Antananarivo'}
           value={formData.address}
           onChange={handleChange}
           required

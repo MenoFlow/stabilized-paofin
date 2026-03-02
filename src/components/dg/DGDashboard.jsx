@@ -2,7 +2,6 @@
 import React, { useState, useEffect } from 'react';
 import { useLanguage } from '../../context/LanguageContext'; // On garde useLanguage
 import Header from '../common/Header';
-import LanguageToggle from '../common/LanguageToggle';
 import ExecutiveSummary from './ExecutiveSummary';
 import PerformanceChart from './PerformanceChart';
 import ExecutiveAlerts from './ExecutiveAlerts';
@@ -67,6 +66,11 @@ function DGDashboard() {
     setTimeout(animateMetrics, 300);
   }, []);
 
+  const dashboardTitle = {
+    fr: "Dashboard Direction Générale",
+    mg: "Dashboard Fitantanana Ankapobeny"
+  };
+
   const handleLogout = () => {
     localStorage.removeItem('currentUser');
     window.location.href = '/';
@@ -81,15 +85,14 @@ function DGDashboard() {
 
   return (
     <>
-      <LanguageToggle />
-      
       <Header 
         user={{
           ...userInfo,
           name: userInfo.name,
           role: userInfo.role[language]
         }} 
-        onLogout={handleLogout} 
+        onLogout={handleLogout}
+        dashboardTitle={dashboardTitle}
       />
 
       <div className="container">

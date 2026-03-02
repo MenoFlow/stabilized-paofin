@@ -2,7 +2,6 @@
 import React, { useState, useEffect } from 'react';
 import { useLanguage } from '../../context/LanguageContext';
 import Header from '../common/Header';
-import LanguageToggle from '../common/LanguageToggle';
 import OperationalStats from './OperationalStats';
 import CreditsAttentionTable from './CreditsAttentionTable';
 import SystemAlerts from './SystemAlerts';
@@ -42,6 +41,11 @@ function OperationsDashboard() {
     return () => clearInterval(interval);
   }, []);
 
+  const dashboardTitle = {
+    fr: "Dashboard Opérations",
+    mg: "Dashboard Asa"
+  };
+
   const handleLogout = () => {
     localStorage.removeItem('currentUser');
     window.location.href = '/';
@@ -55,8 +59,6 @@ function OperationsDashboard() {
 
   return (
     <>
-      <LanguageToggle />
-      
       <Header 
         user={{
           name: userInfo.name,
@@ -64,6 +66,7 @@ function OperationsDashboard() {
           avatar: userInfo.avatar
         }}
         onLogout={handleLogout}
+        dashboardTitle={dashboardTitle}
       />
 
       <div className="container">

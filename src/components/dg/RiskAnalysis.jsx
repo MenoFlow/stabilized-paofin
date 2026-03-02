@@ -24,12 +24,22 @@ function RiskAnalysis({ data }) {
     }
   };
 
+  const title = {
+    fr: "Analyse des Risques",
+    mg: "Fanadihadiana ny Loza"
+  };
+
+  const globalRiskLabel = {
+    fr: "Niveau de Risque Global",
+    mg: "Ambaratonga Loza Ankapobeny"
+  };
+
   return (
     <div className="card">
-      <h3><Scale className="inline-icon" size={20} /> Analyse des Risques</h3>
+      <h3><Scale className="inline-icon" size={20} /> {title[language]}</h3>
 
       <div style={{ marginBottom: '1.5rem' }}>
-        <h4>Niveau de Risque Global</h4>
+        <h4>{globalRiskLabel[language]}</h4>
         <div className={`risk-indicator ${getRiskClass(data.global.status)}`}>
           {data.global.level[language]} - {data.global.description[language]}
         </div>
@@ -60,7 +70,7 @@ function RiskAnalysis({ data }) {
       </div>
 
       <div style={{ marginTop: '1.5rem', padding: '1rem', background: '#fff3cd', borderRadius: '8px' }}>
-        <strong>Recommandation:</strong><br />
+        <strong>{language === 'fr' ? 'Recommandation:' : 'Soso-kevitra:'}</strong><br />
         <small>{data.recommendation[language]}</small>
       </div>
     </div>

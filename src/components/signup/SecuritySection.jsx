@@ -30,7 +30,7 @@ function SecuritySection({ formData, handleChange }) {
         </div>
         <div className="form-group">
           <label className="form-label">
-            {language === 'fr' ? 'Confirmer le mot de passe' : 'Hamafy ny teny miafina'}
+            {language === 'fr' ? 'Confirmer le mot de passe' : 'Hamarino ny teny miafina'}
           </label>
           <input
             type="password"

@@ -19,9 +19,14 @@ function RecommendedActions({ actions }) {
     }
   };
 
+  const title = {
+    fr: "■ Actions Recommandées",
+    mg: "■ Hetsika Soso-kevitra"
+  };
+
   return (
     <div className="card">
-      <h3>■ Actions Recommandées</h3>
+      <h3>{title[language]}</h3>
       <div style={{ spaceY: '1rem' }}>
         {actions.map((action, index) => (
           <div

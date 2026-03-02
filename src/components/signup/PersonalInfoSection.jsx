@@ -11,19 +11,19 @@ function PersonalInfoSection({ formData, handleChange }) {
     <div className="form-section">
       <div className="section-title">
         <User className="section-icon" size={20} />
-        <span>{language === 'fr' ? 'Informations personnelles' : 'Fampahalalana manokana'}</span>
+        <span>{language === 'fr' ? 'Informations personnelles' : 'Mombamomba ahy'}</span>
       </div>
 
       <div className="form-row">
         <div className="form-group">
           <label className="form-label">
-            {language === 'fr' ? 'Prénom' : 'Anarana'}
+            {language === 'fr' ? 'Prénom' : 'Fanampin\'Anarana'}
           </label>
           <input
             type="text"
             className="form-input"
             name="firstName"
-            placeholder={language === 'fr' ? 'Ex: Rakoto' : 'Ex: Rakoto'}
+            placeholder={language === 'fr' ? 'Ex: Rakoto' : 'Ohatra: Rakoto'}
             value={formData.firstName}
             onChange={handleChange}
             required
@@ -31,13 +31,13 @@ function PersonalInfoSection({ formData, handleChange }) {
         </div>
         <div className="form-group">
           <label className="form-label">
-            {language === 'fr' ? 'Nom' : 'Fanampiny'}
+            {language === 'fr' ? 'Nom' : 'Anarana'}
           </label>
           <input
             type="text"
             className="form-input"
             name="lastName"
-            placeholder={language === 'fr' ? 'Ex: Hery' : 'Ex: Hery'}
+            placeholder={language === 'fr' ? 'Ex: Hery' : 'Ohatra: Hery'}
             value={formData.lastName}
             onChange={handleChange}
             required
@@ -54,6 +54,7 @@ function PersonalInfoSection({ formData, handleChange }) {
             type="date"
             className="form-input"
             name="birthDate"
+            placeholder={language === 'fr' ? 'jj/mm/aaaa' : 'jj/mm/aaaa'}
             value={formData.birthDate}
             onChange={handleChange}
             required
@@ -61,7 +62,7 @@ function PersonalInfoSection({ formData, handleChange }) {
         </div>
         <div className="form-group">
           <label className="form-label">
-            {language === 'fr' ? 'Sexe' : 'Lahy/Vavy'}
+            {language === 'fr' ? 'Sexe' : 'Lahy / Vavy'}
           </label>
           <select
             className="form-select"
@@ -81,13 +82,13 @@ function PersonalInfoSection({ formData, handleChange }) {
 
       <div className="form-group">
         <label className="form-label">
-          {language === 'fr' ? 'Numéro CIN' : 'Laharan\'ny CIN'}
+          {language === 'fr' ? 'Numéro CIN' : 'Laharan\'ny Karapanondro (CIN)'}
         </label>
         <input
           type="text"
           className="form-input"
           name="cinNumber"
-          placeholder="Ex: 101234567890"
+          placeholder={language === 'fr' ? 'Ex: 101234567890' : 'Ohatra: 101234567890'}
           value={formData.cinNumber}
           onChange={handleChange}
           required

@@ -3,25 +3,25 @@
 export const signupContent = {
   title: {
     fr: "Créer votre compte",
-    mg: "Mamorona ny kaontinao"
+    mg: "Hanokatra kaonty"
   },
   subtitle: {
     fr: "Rejoignez VINA et accédez à nos services de crédit",
-    mg: "Midira amin'ny VINA ary mahazo ny tolotra fampindramam-bola"
+    mg: "Midira ao amin'i VINA mba hisitraka ny tolotra fihindramam-bola haingana sy azo antoka"
   },
   benefits: {
     title: {
       fr: "● Pourquoi choisir VINA ?",
-      mg: "● Nahoana no misafidy VINA ?"
+      mg: "● Nahoana no misafidy an'i VINA?"
     },
     list: [
       {
         fr: "Simulation de crédit instantanée et gratuite",
-        mg: "Simulation trosa avy hatrany sy maimaim-poana"
+        mg: "Ahafahako mikajy ny fihindramam-bola eo no ho eo ary maimaim-poana"
       },
       {
         fr: "Processus 100% digital avec E-KYC mobile",
-        mg: "Dingana 100% nomerika miaraka amin'ny E-KYC finday"
+        mg: "Dingana 100% nomerika miaraka amin'ny E-KYC amin'ny finday"
       },
       {
         fr: "Paiements sécurisés via PAOSITRA MONEY",
@@ -29,11 +29,11 @@ export const signupContent = {
       },
       {
         fr: "Marketplace partenaire pour vos achats à crédit",
-        mg: "Marketplace mpiara-miombon'antoka ho an'ny fividianana amin'ny trosa"
+        mg: "Mpiara-miombon'antoka ahafahanao mividy entana aloa tsikelikely"
       },
       {
         fr: "Support client dédié en français et malagasy",
-        mg: "Fanampiana mpanjifa natokana amin'ny teny frantsay sy malagasy"
+        mg: "Torolàlana sy fanampiana ny mpanjifa amin'ny teny frantsay sy malagasy"
       }
     ]
   }
@@ -61,26 +61,26 @@ export const termsContent = {
   },
   termsLink: {
     fr: "conditions générales d'utilisation",
-    mg: "fepetra ankapobeny fampiasana"
+    mg: "fepetra sy ny politika momba ny fikirakiràna ny mombamomba ny kaontiko aho"
   },
   and: {
     fr: " et la ",
-    mg: " sy ny "
+    mg: ""
   },
   privacyLink: {
     fr: "politique de confidentialité",
-    mg: "politikan'ny tsiambaratelo"
+    mg: ""
   },
   newsletter: {
     fr: "Je souhaite recevoir les actualités et offres spéciales de PAOFIN",
-    mg: "Te-handray ny vaovao sy ny tolotra manokana avy amin'ny PAOFIN aho"
+    mg: "Maniry handray vaovao sy tolotra manokana avy amin'i PAOFIN aho"
   }
 };
 
 export const loginLink = {
   text: {
     fr: "Vous avez déjà un compte ? ",
-    mg: "Efa manana kaonty ve ianao ? "
+    mg: "Efa manana kaonty ve ianao? "
   },
   linkText: {
     fr: "Se connecter",
